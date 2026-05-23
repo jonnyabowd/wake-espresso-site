@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -335,15 +337,20 @@
       border: 2px solid var(--color-brand-blue);
       border-radius: 4px;
       margin: 8px 0 16px;
-      overflow: hidden;
     }
 
-    #map iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
+    .leaflet-tile-pane { filter: grayscale(0.4) saturate(1.1); }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
+
+    .leaflet-popup-tip-container { display: none; }
+
+    .leaflet-control-zoom a { color: var(--color-brand-blue) !important; }
 
     .directions-btn {
       display: inline-block;
@@ -710,14 +717,7 @@
         <div class="section-title"><span>Location</span></div>
         <p>8392 FM2673<br>Canyon Lake, TX 78133</p>
       </div>
-      <div id="map">
-        <iframe
-          src="https://www.google.com/maps?q=Wake+Espresso,+8392+FM2673,+Canyon+Lake,+TX+78133&output=embed"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
+      <div id="map"></div>
       <div style="text-align:center; margin-bottom: 24px;">
         <a class="directions-btn" href="https://maps.app.goo.gl/tD8LVoGH7LGiPKmz9" target="_blank" rel="noopener">Get Directions</a>
       </div>
@@ -750,6 +750,35 @@
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('tab-' + name).classList.add('active');
       event.currentTarget.classList.add('active');
+      if (name === 'contact' && !window._mapInit) initMap();
+    }
+
+    function initMap() {
+      window._mapInit = true;
+      const lat = 29.8446598, lon = -98.2722146;
+
+      const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lon], 16);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> &copy; <a href="https://carto.com">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      const icon = L.divIcon({
+        className: '',
+        html: `<svg width="30" height="38" viewBox="0 0 30 38" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 0C6.716 0 0 6.716 0 15c0 9.375 15 23 15 23S30 24.375 30 15C30 6.716 23.284 0 15 0z" fill="#0cc0df"/>
+          <circle cx="15" cy="15" r="5.5" fill="#fffde8"/>
+        </svg>`,
+        iconSize: [30, 38],
+        iconAnchor: [15, 38],
+        popupAnchor: [0, -42]
+      });
+
+      L.marker([lat, lon], { icon })
+        .addTo(map)
+        .bindPopup('<strong>Wake Espresso</strong><br><span style="color:#555">8392 FM2673, Canyon Lake, TX</span>')
+        .openPopup();
     }
   </script>
 </body>
