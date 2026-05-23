@@ -217,6 +217,89 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
+    /* Feed */
+    .feed-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .feed-header h2 {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .feed-header a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #111;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .feed-header a svg { width: 18px; height: 18px; }
+
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .feed-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+
+    .feed-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .feed-item:hover img { transform: scale(1.04); }
+    .feed-item:hover .overlay { opacity: 1; }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(12, 192, 223, 0.35);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feed-footer {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .feed-footer a {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-brand-blue);
+      text-decoration: none;
+      border: 1.5px solid var(--color-brand-blue);
+      padding: 8px 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .feed-footer a:hover {
+      background: var(--color-brand-blue);
+      color: white;
+    }
+
     /* About & Contact */
     .info-block {
       text-align: center;
@@ -260,9 +343,30 @@
 
     <!-- ABOUT -->
     <div id="tab-about" class="tab-panel">
-      <div class="info-block">
-        <h3>Our Story</h3>
-        <p>Coming soon.</p>
+      <div class="feed-header">
+        <h2>Follow us on Instagram</h2>
+        <a href="https://www.instagram.com/wakeexpresso" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          @wakeexpresso
+        </a>
+      </div>
+      <div class="feed-grid">
+        <div class="feed-item"><img src="images/IMG_0048.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0049.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0052.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0053.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0054.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0055.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0056.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0058.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/IMG_0059.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+      </div>
+      <div class="feed-footer">
+        <a href="https://www.instagram.com/wakeexpresso" target="_blank" rel="noopener">View on Instagram</a>
       </div>
     </div>
 
