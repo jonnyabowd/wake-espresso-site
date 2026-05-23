@@ -370,6 +370,92 @@
       background: var(--color-brand-blue);
       color: white;
     }
+
+    /* Reviews carousel */
+    .reviews-section { margin-top: 8px; }
+
+    .review-carousel {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .review-track {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      min-height: 140px;
+    }
+
+    .review-card {
+      display: none;
+      text-align: center;
+      padding: 8px 4px;
+    }
+
+    .review-card.active { display: block; }
+
+    .review-stars {
+      color: var(--color-brand-blue);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .review-text {
+      font-size: 0.82rem;
+      color: #444;
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .review-name {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .review-arrow {
+      background: none;
+      border: 1.5px solid var(--color-brand-blue);
+      border-radius: 999px;
+      color: var(--color-brand-blue);
+      width: 32px;
+      height: 32px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .review-arrow:hover {
+      background: var(--color-brand-blue);
+      color: white;
+    }
+
+    .review-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .dot.active { background: var(--color-brand-blue); }
   </style>
 </head>
 <body>
@@ -413,6 +499,48 @@
       </div>
       <div class="feed-footer">
         <a href="https://www.instagram.com/wakeespresso" target="_blank" rel="noopener">View on Instagram</a>
+      </div>
+
+      <div class="reviews-section">
+        <div class="section-title" style="margin-top: 28px;"><span>Reviews</span></div>
+        <div class="review-carousel">
+          <button class="review-arrow review-prev" onclick="shiftReview(-1)" aria-label="Previous review">&#8592;</button>
+          <div class="review-track">
+            <div class="review-card active">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">"Best coffee stop on the lake. The Cafe Dulce is absolutely incredible — I get one every single time I'm out here."</p>
+              <p class="review-name">— Sarah M.</p>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">"A hidden gem in Canyon Lake. The drive-thru is fast, the staff is friendly, and the cold brew is the real deal."</p>
+              <p class="review-name">— Jake R.</p>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">"We stop here every time we're heading to the lake. The Cookie Butter Cold Brew is worth the trip alone."</p>
+              <p class="review-name">— Lindsey T.</p>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">"Locally owned and it shows. Great coffee, great vibes. Love supporting a small business that cares about quality."</p>
+              <p class="review-name">— Marcus H.</p>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="review-text">"The Tsunami energy drink is my go-to before a long day on the water. Wake Espresso never misses."</p>
+              <p class="review-name">— Becca O.</p>
+            </div>
+          </div>
+          <button class="review-arrow review-next" onclick="shiftReview(1)" aria-label="Next review">&#8594;</button>
+        </div>
+        <div class="review-dots">
+          <span class="dot active" onclick="goToReview(0)"></span>
+          <span class="dot" onclick="goToReview(1)"></span>
+          <span class="dot" onclick="goToReview(2)"></span>
+          <span class="dot" onclick="goToReview(3)"></span>
+          <span class="dot" onclick="goToReview(4)"></span>
+        </div>
       </div>
     </div>
 
@@ -751,6 +879,19 @@
       document.getElementById('tab-' + name).classList.add('active');
       event.currentTarget.classList.add('active');
       if (name === 'contact' && !window._mapInit) initMap();
+    }
+
+    let currentReview = 0;
+    const totalReviews = 5;
+
+    function shiftReview(dir) {
+      goToReview((currentReview + dir + totalReviews) % totalReviews);
+    }
+
+    function goToReview(index) {
+      document.querySelectorAll('.review-card').forEach((c, i) => c.classList.toggle('active', i === index));
+      document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
+      currentReview = index;
     }
 
     function initMap() {
