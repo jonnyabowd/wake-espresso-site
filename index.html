@@ -382,18 +382,17 @@
 
     .review-track {
       flex: 1;
-      overflow: hidden;
-      position: relative;
-      min-height: 140px;
+      display: grid;
     }
 
     .review-card {
-      display: none;
+      grid-area: 1 / 1;
       text-align: center;
       padding: 8px 4px;
+      visibility: hidden;
     }
 
-    .review-card.active { display: block; }
+    .review-card.active { visibility: visible; }
 
     .review-stars {
       color: var(--color-brand-blue);
@@ -880,20 +879,6 @@
       event.currentTarget.classList.add('active');
       if (name === 'contact' && !window._mapInit) initMap();
     }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const track = document.querySelector('.review-track');
-      const cards = document.querySelectorAll('.review-card');
-      let maxH = 0;
-      cards.forEach(c => {
-        c.style.display = 'block';
-        c.style.visibility = 'hidden';
-        maxH = Math.max(maxH, c.offsetHeight);
-        c.style.display = '';
-        c.style.visibility = '';
-      });
-      track.style.minHeight = maxH + 'px';
-    });
 
     let currentReview = 0;
     const totalReviews = 5;
