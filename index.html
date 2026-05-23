@@ -870,7 +870,7 @@
 
   </div>
 
-  <p style="text-align: center; font-size: 0.65rem; color: var(--color-brand-cream); opacity: 0.8; padding: 20px 0 12px;">Made with coffee and 🩵 in Canyon Lake, Texas &copy; 2026</p>
+  <p style="text-align: center; font-size: 0.65rem; color: var(--color-brand-cream); opacity: 0.8; padding: 20px 0 12px;">Made with coffee and &#9829; Canyon Lake, Texas &copy; 2026</p>
 
   <script>
     function switchTab(name) {
@@ -880,6 +880,20 @@
       event.currentTarget.classList.add('active');
       if (name === 'contact' && !window._mapInit) initMap();
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const track = document.querySelector('.review-track');
+      const cards = document.querySelectorAll('.review-card');
+      let maxH = 0;
+      cards.forEach(c => {
+        c.style.display = 'block';
+        c.style.visibility = 'hidden';
+        maxH = Math.max(maxH, c.offsetHeight);
+        c.style.display = '';
+        c.style.visibility = '';
+      });
+      track.style.minHeight = maxH + 'px';
+    });
 
     let currentReview = 0;
     const totalReviews = 5;
