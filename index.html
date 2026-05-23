@@ -188,14 +188,15 @@
     /* Tabs */
     .tabs {
       display: flex;
-      border-bottom: 2px solid var(--color-brand-blue);
+      gap: 8px;
       margin-bottom: 28px;
     }
 
     .tab-btn {
       flex: 1;
       background: none;
-      border: none;
+      border: 2px solid var(--color-brand-blue);
+      border-radius: 999px;
       padding: 10px 0;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.68rem;
@@ -204,15 +205,14 @@
       text-transform: uppercase;
       color: #aaa;
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-      transition: color 0.2s;
+      border-color: #ddd;
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
     }
 
     .tab-btn.active {
       background: var(--color-brand-blue);
       color: var(--color-brand-cream);
-      border-bottom-color: var(--color-brand-blue);
+      border-color: var(--color-brand-blue);
     }
 
     .tab-panel { display: none; }
