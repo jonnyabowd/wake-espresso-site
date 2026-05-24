@@ -7,6 +7,7 @@
 | `--color-brand-blue` | `#0cc0df` | Primary brand color, CTA buttons, accents |
 | `--color-brand-cream` | `#fffde8` | Light backgrounds, text on dark |
 | `--color-brand-grey` | `#545454` | Background the logo is designed to sit on |
+| `--color-text-muted` | `#aaaaaa` | De-emphasized text, inactive UI elements |
 
 ## Logo
 
