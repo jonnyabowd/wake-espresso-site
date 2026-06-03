@@ -217,8 +217,20 @@
       border-color: var(--color-brand-blue);
     }
 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu-header { opacity: 0; }
+    .tabs { opacity: 0; }
+
+    .menu-header.animate-in,
+    .tabs.animate-in { animation: fadeUp 0.5s ease forwards; }
+
     .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
+    .tab-panel.active { display: block; opacity: 0; }
+    .tab-panel.active.animate-in { animation: fadeUp 0.5s ease forwards; }
 
     /* Feed */
     .feed-header {
@@ -864,10 +876,13 @@
 
   <script>
     function switchTab(name) {
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => { p.classList.remove('active'); p.classList.remove('animate-in'); });
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-' + name).classList.add('active');
+      const panel = document.getElementById('tab-' + name);
+      panel.classList.add('active');
       event.currentTarget.classList.add('active');
+      void panel.offsetWidth;
+      panel.classList.add('animate-in');
       if (name === 'contact' && !window._mapInit) initMap();
     }
 
@@ -883,6 +898,17 @@
       document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === index));
       currentReview = index;
     }
+
+    // Page-load animation sequence: logo → tabs → content
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => document.querySelector('.menu-header').classList.add('animate-in'), 50);
+      setTimeout(() => document.querySelector('.tabs').classList.add('animate-in'), 350);
+      setTimeout(() => {
+        const active = document.querySelector('.tab-panel.active');
+        void active.offsetWidth;
+        active.classList.add('animate-in');
+      }, 650);
+    });
 
     function initMap() {
       window._mapInit = true;
