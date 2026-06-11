@@ -523,6 +523,10 @@
     }
 
     .dot.active { background: var(--color-brand-blue); }
+
+    .footer-text { padding-bottom: 85vh; }
+    @media (min-width: 600px) { .footer-text { padding-bottom: 77vh; } }
+    @media (min-width: 800px) { .footer-text { padding-bottom: 70vh; } }
   </style>
 </head>
 <body>
@@ -928,7 +932,7 @@
 
   <div id="boat" title="🤫">🚤</div>
 
-  <p style="text-align: center; font-size: 0.78rem; color: var(--color-brand-cream); opacity: 0.8; padding: 20px 0 80vh;">Made with ☕️ and 🤍 in Canyon Lake, TX &copy; <script>document.write(new Date().getFullYear())</script></p>
+  <p class="footer-text" style="text-align: center; font-size: 0.78rem; color: var(--color-brand-cream); opacity: 0.8; padding-top: 20px;">Made with ☕️ and 🤍 in Canyon Lake, TX &copy; <script>document.write(new Date().getFullYear())</script></p>
 
   <script>
     function switchTab(name) {
