@@ -263,10 +263,10 @@
 
     @keyframes boatComeBack {
       0%   { transform: translateX(calc(-50% + 140vw)) rotate(15deg); animation-timing-function: linear; }
-      14%  { transform: translateX(-50%) rotate(15deg); animation-timing-function: ease-out; }
-      20%  { transform: translateX(calc(-50% - 35vw)) rotate(15deg); animation-timing-function: ease-out; }
-      28%  { transform: translateX(calc(-50% - 35vw)) rotate(0deg); }
-      40%  { transform: translateX(calc(-50% - 35vw)) rotate(0deg); animation-timing-function: ease-out; }
+      12%  { transform: translateX(-50%) rotate(15deg); animation-timing-function: ease-out; }
+      17%  { transform: translateX(calc(-50% - 35vw)) rotate(15deg); animation-timing-function: ease-out; }
+      23%  { transform: translateX(calc(-50% - 35vw)) rotate(0deg); }
+      33%  { transform: translateX(calc(-50% - 35vw)) rotate(0deg); animation-timing-function: ease-out; }
       100% { transform: translateX(-50%) rotate(0deg); }
     }
 
@@ -969,7 +969,7 @@
         boat.addEventListener('animationend', function onZoom() {
           boat.removeEventListener('animationend', onZoom);
           setTimeout(() => {
-            boat.style.animation = 'boatComeBack 5s linear forwards';
+            boat.style.animation = 'boatComeBack 6s linear forwards';
             boat.addEventListener('animationend', function onReturn() {
               boat.removeEventListener('animationend', onReturn);
               boat.style.animation = '';
