@@ -16,8 +16,8 @@
 
     html, body { overflow-x: hidden; }
 
-    html.blackout-mode, html.blackout-mode body { background: #000 !important; }
-    html.whiteout-mode, html.whiteout-mode body { background: #fff !important; }
+    html.blackout-mode, html.blackout-mode body { background: #000 !important; height: 100%; overflow: hidden; }
+    html.whiteout-mode, html.whiteout-mode body { background: #fff !important; height: 100%; overflow: hidden; }
 
     html { font-size: 16px; }
     @media (min-width: 600px) { html { font-size: 20px; } }
@@ -714,7 +714,7 @@
 
     #blackout {
       position: fixed;
-      inset: 0;
+      inset: -50vh 0;
       background: #000;
       z-index: 99999;
       display: none;
@@ -722,7 +722,7 @@
 
     #whiteout {
       position: fixed;
-      inset: 0;
+      inset: -50vh 0;
       background: #fff;
       z-index: 99999;
       display: none;
