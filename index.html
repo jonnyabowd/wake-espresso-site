@@ -223,26 +223,6 @@
       color: var(--color-brand-cream);
       border: 0.2rem solid var(--color-brand-blue);
       box-shadow: inset 0 -0.35rem 0 rgba(84, 84, 84, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tab-btn.active::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--color-brand-grey);
-      border-radius: inherit;
-      opacity: 0;
-      pointer-events: none;
-      animation: tabPulse 8s ease-in-out infinite;
-      animation-delay: var(--pulse-delay, 0ms);
-    }
-
-    @keyframes tabPulse {
-      0%, 50% { opacity: 0; }
-      75%     { opacity: 0.3; }
-      100%    { opacity: 0; }
     }
 
     @keyframes waterFloat {
@@ -1155,7 +1135,6 @@
       const panel = document.getElementById('tab-' + name);
       panel.classList.add('active');
       event.currentTarget.classList.add('active');
-      syncTabPulse(event.currentTarget);
       void panel.offsetWidth;
       panel.classList.add('animate-in');
       if (name === 'contact' && !window._mapInit) initMap();
@@ -1172,15 +1151,6 @@
         if (e.animationName === 'waterFloat') randomizeFloat(el);
       });
     });
-
-    // Keep the active tab pulse in phase with the logo float animation
-    function syncTabPulse(btn) {
-      const logo = document.querySelector('.menu-header img');
-      const anim = logo.getAnimations()[0];
-      if (anim && typeof anim.currentTime === 'number') {
-        btn.style.setProperty('--pulse-delay', -(anim.currentTime % 8000) + 'ms');
-      }
-    }
 
     let currentReview = 0;
     const totalReviews = 5;
