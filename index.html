@@ -261,10 +261,10 @@
     }
 
     @keyframes boatComeBack {
-      0%   { transform: translateX(calc(-50% + 140vw)); opacity: 1; }
-      75%  { transform: translateX(-50%); opacity: 1; }
-      88%  { transform: translateX(calc(-50% - 40px)); opacity: 1; }
-      100% { transform: translateX(-50%); opacity: 1; }
+      0%   { transform: translateX(calc(-50% + 140vw)); animation-timing-function: ease-out; }
+      75%  { transform: translateX(-50%); animation-timing-function: ease-in; }
+      88%  { transform: translateX(calc(-50% - 100px)); animation-timing-function: ease-out; }
+      100% { transform: translateX(-50%); }
     }
 
     @keyframes fadeUp {
@@ -966,7 +966,7 @@
         boat.addEventListener('animationend', function onZoom() {
           boat.removeEventListener('animationend', onZoom);
           setTimeout(() => {
-            boat.style.animation = 'boatComeBack 0.8s ease-out forwards';
+            boat.style.animation = 'boatComeBack 0.8s linear forwards';
             boat.addEventListener('animationend', function onReturn() {
               boat.removeEventListener('animationend', onReturn);
               boat.style.animation = '';
