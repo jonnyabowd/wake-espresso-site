@@ -597,6 +597,14 @@
 
     #player span { position: absolute; inset: 0; }
 
+    #player span:first-child {
+      inset: auto;
+      right: 0;
+      bottom: 0;
+      font-size: 1.25rem;
+      z-index: 1;
+    }
+
     .game-item {
       position: absolute;
       left: -60px;
@@ -609,7 +617,8 @@
       bottom: 1.5rem;
       left: 1rem;
       font-family: 'Press Start 2P', monospace;
-      font-size: 0.8rem;
+      font-size: 25vw;
+      line-height: 1;
       color: var(--color-brand-cream);
     }
 
