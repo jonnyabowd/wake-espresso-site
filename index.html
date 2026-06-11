@@ -223,13 +223,26 @@
       color: var(--color-brand-cream);
       border-color: transparent;
       box-shadow: inset 0 -0.35rem 0 rgba(84, 84, 84, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--color-brand-grey);
+      border-radius: inherit;
+      opacity: 0;
+      pointer-events: none;
       animation: tabPulse 8s ease-in-out infinite;
+      animation-delay: var(--pulse-delay, 0ms);
     }
 
     @keyframes tabPulse {
-      0%, 50% { background-color: rgba(12, 192, 223, 1); }
-      75%     { background-color: rgba(12, 192, 223, 0.6); }
-      100%    { background-color: rgba(12, 192, 223, 1); }
+      0%, 50% { opacity: 0; }
+      75%     { opacity: 0.3; }
+      100%    { opacity: 0; }
     }
 
     @keyframes waterFloat {
@@ -1117,7 +1130,7 @@
       const logo = document.querySelector('.menu-header img');
       const anim = logo.getAnimations()[0];
       if (anim && typeof anim.currentTime === 'number') {
-        btn.style.animationDelay = -(anim.currentTime % 8000) + 'ms';
+        btn.style.setProperty('--pulse-delay', -(anim.currentTime % 8000) + 'ms');
       }
     }
 
