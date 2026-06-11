@@ -1441,7 +1441,13 @@
           void el.offsetWidth;
           el.classList.remove('page-fade-out');
         });
-        document.querySelector('.tab-btn').click();
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('.tab-btn').classList.add('active');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active', 'animate-in'));
+        const menuPanel = document.getElementById('tab-menu');
+        menuPanel.classList.add('active');
+        void menuPanel.offsetWidth;
+        menuPanel.classList.add('animate-in');
         window.scrollTo(0, 0);
       }, 650);
     });
