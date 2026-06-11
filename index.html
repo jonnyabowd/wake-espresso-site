@@ -723,12 +723,12 @@
       display: none;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
     }
 
     #whiteout img {
       width: 8.25rem;
       max-width: 40%;
+      cursor: pointer;
       animation: waterFloat 8s ease-in-out infinite;
     }
   </style>
@@ -1416,7 +1416,7 @@
       document.getElementById('whiteout').style.display = 'flex';
     }
 
-    document.getElementById('whiteout').addEventListener('click', () => location.reload());
+    document.querySelector('#whiteout img').addEventListener('click', () => location.reload());
 
     gameScreen.addEventListener('pointerdown', e => { e.preventDefault(); steering = true; });
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev =>
