@@ -683,6 +683,36 @@
       color: white;
     }
 
+    #tired-dog-track {
+      position: absolute;
+      bottom: 2.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+
+    .tired-ghost { visibility: hidden; }
+
+    #tired-dog {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 0.8em;
+      line-height: 1;
+      animation: tiredDogWalk 8s linear infinite;
+    }
+
+    @keyframes tiredDogWalk {
+      0%      { left: calc(100% - 1.2em); transform: scaleX(1); }
+      43.75%  { left: 0; transform: scaleX(1); }
+      50%     { left: 0; transform: scaleX(1); }
+      50.001% { left: 0; transform: scaleX(-1); }
+      93.75%  { left: calc(100% - 1.2em); transform: scaleX(-1); }
+      100%    { left: calc(100% - 1.2em); transform: scaleX(-1); }
+    }
+
     #blackout {
       position: fixed;
       inset: 0;
@@ -1113,6 +1143,7 @@
     <button class="game-btn" id="refill-yes">Yes</button>
     <button class="game-btn" id="refill-menu">Menu</button>
     <a id="much-tired" href="https://en.wikipedia.org/wiki/Doge_%28meme%29" target="_blank" rel="noopener">much tired</a>
+    <div id="tired-dog-track" aria-hidden="true"><span class="tired-ghost">much tired</span><span id="tired-dog">🐕</span></div>
   </div>
 
   <div id="blackout"></div>
