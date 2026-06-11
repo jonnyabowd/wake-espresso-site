@@ -237,7 +237,8 @@
     #boat {
       position: absolute;
       bottom: 0px;
-      right: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 2rem;
       cursor: pointer;
       user-select: none;
@@ -246,22 +247,22 @@
     }
 
     @keyframes boatWiggle {
-      0%   { transform: rotate(0deg); }
-      20%  { transform: rotate(-8deg); }
-      40%  { transform: rotate(8deg); }
-      60%  { transform: rotate(-5deg); }
-      80%  { transform: rotate(5deg); }
-      100% { transform: rotate(0deg); }
+      0%   { transform: translateX(-50%) rotate(0deg); }
+      20%  { transform: translateX(-50%) rotate(-8deg); }
+      40%  { transform: translateX(-50%) rotate(8deg); }
+      60%  { transform: translateX(-50%) rotate(-5deg); }
+      80%  { transform: translateX(-50%) rotate(5deg); }
+      100% { transform: translateX(-50%) rotate(0deg); }
     }
 
     @keyframes boatZoomLeft {
-      from { transform: translateX(0); opacity: 1; }
-      to   { transform: translateX(-120vw); opacity: 1; }
+      from { transform: translateX(-50%); opacity: 1; }
+      to   { transform: translateX(calc(-50% - 120vw)); opacity: 1; }
     }
 
     @keyframes boatComeBack {
-      from { transform: translateX(140vw); opacity: 1; }
-      to   { transform: translateX(0); opacity: 1; }
+      from { transform: translateX(calc(-50% + 140vw)); opacity: 1; }
+      to   { transform: translateX(-50%); opacity: 1; }
     }
 
     @keyframes fadeUp {
