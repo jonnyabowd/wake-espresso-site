@@ -1411,12 +1411,16 @@
     function volcanoBlackout() {
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
+      document.documentElement.style.background = '#000';
+      document.body.style.background = '#000';
       document.getElementById('blackout').style.display = 'block';
     }
 
     function islandWhiteout() {
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
+      document.documentElement.style.background = '#fff';
+      document.body.style.background = '#fff';
       document.getElementById('whiteout').style.display = 'flex';
     }
 
