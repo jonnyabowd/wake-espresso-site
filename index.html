@@ -222,14 +222,13 @@
     }
 
     @keyframes waterFloat {
-      0%, 71% { transform: translateY(0px); }
-      82%     { transform: translateY(-5px); }
-      93%     { transform: translateY(-2px); }
-      100%    { transform: translateY(0px); }
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-5px); }
+      100% { transform: translateY(0px); }
     }
 
     .menu-header img {
-      animation: waterFloat 7s ease-in-out infinite;
+      animation: waterFloat 5s ease-in-out infinite;
     }
 
     #boat {
