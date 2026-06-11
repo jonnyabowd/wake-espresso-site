@@ -222,12 +222,11 @@
     }
 
     @keyframes waterFloat {
-      0%   { transform: translateY(0px)   translateX(0px)  rotate(0deg); }
-      20%  { transform: translateY(-4px)  translateX(2px)  rotate(0.4deg); }
-      45%  { transform: translateY(-6px)  translateX(-1px) rotate(-0.3deg); }
-      65%  { transform: translateY(-3px)  translateX(-3px) rotate(0.2deg); }
-      80%  { transform: translateY(-5px)  translateX(1px)  rotate(-0.4deg); }
-      100% { transform: translateY(0px)   translateX(0px)  rotate(0deg); }
+      0%, 71%  { transform: translateY(0px)  translateX(0px)  rotate(0deg); }
+      78%      { transform: translateY(-4px) translateX(2px)  rotate(0.4deg); }
+      86%      { transform: translateY(-5px) translateX(-2px) rotate(-0.3deg); }
+      93%      { transform: translateY(-3px) translateX(1px)  rotate(0.2deg); }
+      100%     { transform: translateY(0px)  translateX(0px)  rotate(0deg); }
     }
 
     .menu-header img {
