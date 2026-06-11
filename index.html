@@ -651,6 +651,16 @@
       cursor: pointer;
     }
 
+    #refill-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (orientation: landscape) {
+      #refill-btns { flex-direction: row; gap: 1.5rem; }
+    }
+
     #refill-coffee {
       font-size: 7rem;
       line-height: 1;
@@ -1124,8 +1134,10 @@
   <div id="gameover-screen">
     <div id="refill-coffee">☕️</div>
     <h1 class="game-title">Refill coffee?</h1>
-    <button class="game-btn" id="refill-yes">YES</button>
-    <button class="game-btn" id="refill-menu">MENU</button>
+    <div id="refill-btns">
+      <button class="game-btn" id="refill-yes">YES</button>
+      <button class="game-btn" id="refill-menu">MENU</button>
+    </div>
     <a id="much-tired" href="https://en.wikipedia.org/wiki/Doge_%28meme%29" target="_blank" rel="noopener">much tired</a>
     <div id="tired-dog-track" aria-hidden="true"><span class="tired-ghost">much tired</span><span id="tired-dog">🐕</span></div>
   </div>
