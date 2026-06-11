@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0cc0df">
   <title>Wake Espresso</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +15,9 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body { overflow-x: hidden; }
+
+    html.blackout-mode, html.blackout-mode body { background: #000 !important; }
+    html.whiteout-mode, html.whiteout-mode body { background: #fff !important; }
 
     html { font-size: 16px; }
     @media (min-width: 600px) { html { font-size: 20px; } }
@@ -1411,16 +1415,16 @@
     function volcanoBlackout() {
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
-      document.documentElement.style.background = '#000';
-      document.body.style.background = '#000';
+      document.documentElement.classList.add('blackout-mode');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
       document.getElementById('blackout').style.display = 'block';
     }
 
     function islandWhiteout() {
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
-      document.documentElement.style.background = '#fff';
-      document.body.style.background = '#fff';
+      document.documentElement.classList.add('whiteout-mode');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
       document.getElementById('whiteout').style.display = 'flex';
     }
 
