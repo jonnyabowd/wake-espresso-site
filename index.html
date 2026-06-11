@@ -607,9 +607,9 @@
       padding: 1.1rem 0;
       font-family: 'Press Start 2P', monospace;
       font-size: 0.8rem;
-      background: var(--color-brand-cream);
-      color: var(--color-brand-grey);
-      border: none;
+      background: var(--color-brand-blue);
+      color: white;
+      border: 4px dotted white;
       border-radius: 10px;
       cursor: pointer;
       user-select: none;
@@ -626,14 +626,30 @@
     .game-btn {
       font-family: 'Press Start 2P', monospace;
       font-size: 0.8rem;
-      background: var(--color-brand-cream);
-      color: var(--color-brand-grey);
-      border: none;
+      background: var(--color-brand-blue);
+      color: white;
+      border: 4px dotted white;
       border-radius: 10px;
       padding: 1.1rem 0;
       width: 12rem;
       margin-top: 1.5rem;
       cursor: pointer;
+    }
+
+    #refill-coffee {
+      font-size: 10rem;
+      line-height: 1;
+      animation: waterFloat 4s ease-in-out infinite;
+    }
+
+    #much-tired {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-size: 0.85rem;
+      color: white;
     }
 
     #blackout {
@@ -1061,9 +1077,11 @@
   </div>
 
   <div id="gameover-screen">
+    <div id="refill-coffee">☕️</div>
     <h1 class="game-title">Coffee refill?</h1>
     <button class="game-btn" id="refill-yes">Yes</button>
     <button class="game-btn" id="refill-menu">Menu</button>
+    <a id="much-tired" href="https://en.wikipedia.org/wiki/Doge_%28meme%29" target="_blank" rel="noopener">much tired</a>
   </div>
 
   <div id="blackout"></div>
