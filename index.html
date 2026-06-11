@@ -221,6 +221,19 @@
       border-color: var(--color-brand-blue);
     }
 
+    @keyframes waterFloat {
+      0%   { transform: translateY(0px)   translateX(0px)  rotate(0deg); }
+      20%  { transform: translateY(-4px)  translateX(2px)  rotate(0.4deg); }
+      45%  { transform: translateY(-6px)  translateX(-1px) rotate(-0.3deg); }
+      65%  { transform: translateY(-3px)  translateX(-3px) rotate(0.2deg); }
+      80%  { transform: translateY(-5px)  translateX(1px)  rotate(-0.4deg); }
+      100% { transform: translateY(0px)   translateX(0px)  rotate(0deg); }
+    }
+
+    .menu-header img {
+      animation: waterFloat 7s ease-in-out infinite;
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
