@@ -253,20 +253,20 @@
       40%  { transform: translateX(-50%) rotate(8deg); }
       60%  { transform: translateX(-50%) rotate(-5deg); }
       80%  { transform: translateX(-50%) rotate(5deg); }
-      100% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(35deg); }
     }
 
     @keyframes boatZoomLeft {
-      from { transform: translateX(-50%); opacity: 1; }
-      to   { transform: translateX(calc(-50% - 120vw)); opacity: 1; }
+      from { transform: translateX(-50%) rotate(35deg); opacity: 1; }
+      to   { transform: translateX(calc(-50% - 120vw)) rotate(35deg); opacity: 1; }
     }
 
     @keyframes boatComeBack {
-      0%   { transform: translateX(calc(-50% + 140vw)); animation-timing-function: linear; }
-      14%  { transform: translateX(-50%); animation-timing-function: ease-out; }
-      20%  { transform: translateX(calc(-50% - 200px)); }
-      40%  { transform: translateX(calc(-50% - 200px)); animation-timing-function: ease-out; }
-      100% { transform: translateX(-50%); }
+      0%   { transform: translateX(calc(-50% + 140vw)) rotate(35deg); animation-timing-function: linear; }
+      14%  { transform: translateX(-50%) rotate(35deg); animation-timing-function: ease-out; }
+      20%  { transform: translateX(calc(-50% - 200px)) rotate(35deg); }
+      40%  { transform: translateX(calc(-50% - 200px)) rotate(35deg); animation-timing-function: ease-out; }
+      100% { transform: translateX(-50%) rotate(0deg); }
     }
 
     @keyframes fadeUp {
@@ -925,7 +925,7 @@
 
   <div id="boat" title="🤫">🚤</div>
 
-  <p style="text-align: center; font-size: 0.78rem; color: var(--color-brand-cream); opacity: 0.8; padding: 20px 0 52px;">Made with ☕️ and 🤍 in Canyon Lake, TX &copy; <script>document.write(new Date().getFullYear())</script></p>
+  <p style="text-align: center; font-size: 0.78rem; color: var(--color-brand-cream); opacity: 0.8; padding: 20px 0 1052px;">Made with ☕️ and 🤍 in Canyon Lake, TX &copy; <script>document.write(new Date().getFullYear())</script></p>
 
   <script>
     function switchTab(name) {
@@ -961,7 +961,7 @@
       boatBusy = true;
 
       // Wiggle first
-      boat.style.animation = 'boatWiggle 0.5s ease';
+      boat.style.animation = 'boatWiggle 0.5s ease forwards';
       boat.addEventListener('animationend', function onWiggle() {
         boat.removeEventListener('animationend', onWiggle);
         boat.style.animation = 'boatZoomLeft 0.7s ease-in forwards';
