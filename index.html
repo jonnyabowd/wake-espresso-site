@@ -1224,7 +1224,7 @@
               if (boatRunCount === 1) {
                 const dog = document.createElement('div');
                 dog.textContent = '🐕';
-                dog.style.cssText = 'position: absolute; bottom: 8%; right: 22%; font-size: 2.1rem; line-height: 1; cursor: pointer;';
+                dog.style.cssText = 'position: absolute; bottom: 8%; right: 22%; font-size: 2.1rem; line-height: 1; cursor: pointer; animation: fadeUp 0.5s ease forwards;';
                 dog.addEventListener('click', launchGame);
                 document.getElementById('contact-img-wrap').appendChild(dog);
               }
