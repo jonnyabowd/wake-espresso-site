@@ -35,7 +35,7 @@
       position: relative;
       outline: 6px solid var(--color-brand-blue);
       outline-offset: -12px;
-      box-shadow: 0 0.35rem 0 rgba(84, 84, 84, 0.2);
+      box-shadow: 0 0.7rem 0 rgba(84, 84, 84, 0.2);
     }
 
     /* Header */
@@ -559,7 +559,7 @@
       animation: arcadeBlink 1s step-end infinite;
     }
 
-    #game-screen .game-title { text-align: left; }
+    #game-screen .game-title { text-align: left; font-size: 11.2vw; }
 
     @keyframes arcadeBlink {
       0%   { opacity: 1; }
@@ -579,9 +579,9 @@
     #player {
       position: absolute;
       right: 12%;
-      width: 2.5rem;
-      height: 2.5rem;
-      font-size: 2.5rem;
+      width: 5rem;
+      height: 5rem;
+      font-size: 5rem;
       line-height: 1;
       z-index: 2;
     }
@@ -591,8 +591,8 @@
     #player span:first-child {
       inset: auto;
       right: 0;
-      bottom: 0.3rem;
-      font-size: 1.56rem;
+      bottom: 0.6rem;
+      font-size: 3.12rem;
       z-index: -1;
     }
 
@@ -620,7 +620,7 @@
       width: 50%;
       padding: 1.1rem 0;
       font-family: 'Press Start 2P', monospace;
-      font-size: 0.8rem;
+      font-size: 1rem;
       background: var(--color-brand-blue);
       color: white;
       border: 4px dotted white;
@@ -639,7 +639,7 @@
 
     .game-btn {
       font-family: 'Press Start 2P', monospace;
-      font-size: 0.8rem;
+      font-size: 1rem;
       background: var(--color-brand-blue);
       color: white;
       border: 4px dotted white;
@@ -661,7 +661,7 @@
       bottom: 1rem;
       left: 50%;
       transform: translateX(-50%);
-      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
       font-size: 0.85rem;
       color: white;
     }
@@ -671,7 +671,7 @@
       bottom: 2.4rem;
       left: 50%;
       transform: translateX(-50%);
-      font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+      font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
       font-size: 0.85rem;
       pointer-events: none;
     }
@@ -1108,7 +1108,7 @@
 
   <div id="boat" title="🤫">🚤</div>
 
-  <p class="footer-text" style="text-align: center; font-size: 0.78rem; color: var(--color-brand-cream); opacity: 0.8; padding-top: 20px;">Made with ☕️ and 🤍 in Canyon Lake, TX &copy; <script>document.write(new Date().getFullYear())</script></p>
+  <p class="footer-text" style="text-align: center; font-size: 0.78rem; color: var(--color-brand-cream); opacity: 0.8; padding-top: 40px;">Made with ☕️ and 🤍<br><span style="font-size: 0.7em;">Canyon Lake, TX &copy; <script>document.write(new Date().getFullYear())</script></span></p>
 
   <!-- Wake the Lake game -->
   <div id="game-screen">
@@ -1395,6 +1395,7 @@
           void el.offsetWidth;
           el.classList.remove('page-fade-out');
         });
+        document.querySelector('.tab-btn').click();
         window.scrollTo(0, 0);
       }, 650);
     });
