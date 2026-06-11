@@ -1322,10 +1322,10 @@
       document.getElementById('blackout').style.display = 'block';
     }
 
-    steerBtn.addEventListener('pointerdown', e => { e.preventDefault(); steering = true; });
+    gameScreen.addEventListener('pointerdown', e => { e.preventDefault(); steering = true; });
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev =>
-      steerBtn.addEventListener(ev, () => steering = false));
-    steerBtn.addEventListener('contextmenu', e => e.preventDefault());
+      gameScreen.addEventListener(ev, () => steering = false));
+    gameScreen.addEventListener('contextmenu', e => e.preventDefault());
 
     document.getElementById('refill-yes').addEventListener('click', () => {
       gameoverScreen.classList.remove('visible');
