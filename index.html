@@ -894,7 +894,9 @@
 
     <!-- CONTACT -->
     <div id="tab-contact" class="tab-panel">
-      <img src="images/IMG_7962.jpeg" alt="Wake Espresso" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 24px;">
+      <div id="contact-img-wrap" style="position: relative; max-width: 400px; margin: 0 auto 24px;">
+        <img src="images/IMG_7962.jpeg" alt="Wake Espresso" style="width: 100%; display: block;">
+      </div>
       <div class="info-block">
         <div class="section-title"><span>Location</span></div>
         <p>8392 FM2673<br>Canyon Lake, TX 78133</p>
@@ -956,6 +958,7 @@
     // Boat easter egg
     const boat = document.getElementById('boat');
     let boatBusy = false;
+    let boatRan = false;
 
     boat.addEventListener('click', () => {
       if (boatBusy) return;
@@ -974,6 +977,13 @@
               boat.removeEventListener('animationend', onReturn);
               boat.style.animation = '';
               boatBusy = false;
+              if (!boatRan) {
+                boatRan = true;
+                const dog = document.createElement('div');
+                dog.textContent = '🐕';
+                dog.style.cssText = 'position: absolute; bottom: 25%; right: 35%; font-size: 12rem; line-height: 1; pointer-events: none;';
+                document.getElementById('contact-img-wrap').appendChild(dog);
+              }
             });
           }, 2000);
         });
