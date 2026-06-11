@@ -222,6 +222,13 @@
       background: var(--color-brand-blue);
       color: var(--color-brand-cream);
       border-color: var(--color-brand-blue);
+      animation: tabPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes tabPulse {
+      0%, 50% { background-color: rgba(12, 192, 223, 1); }
+      75%     { background-color: rgba(12, 192, 223, 0.25); }
+      100%    { background-color: rgba(12, 192, 223, 1); }
     }
 
     @keyframes waterFloat {
@@ -1068,9 +1075,19 @@
       const panel = document.getElementById('tab-' + name);
       panel.classList.add('active');
       event.currentTarget.classList.add('active');
+      syncTabPulse(event.currentTarget);
       void panel.offsetWidth;
       panel.classList.add('animate-in');
       if (name === 'contact' && !window._mapInit) initMap();
+    }
+
+    // Keep the active tab pulse in phase with the logo float animation
+    function syncTabPulse(btn) {
+      const logo = document.querySelector('.menu-header img');
+      const anim = logo.getAnimations()[0];
+      if (anim && typeof anim.currentTime === 'number') {
+        btn.style.animationDelay = -(anim.currentTime % 8000) + 'ms';
+      }
     }
 
     let currentReview = 0;
