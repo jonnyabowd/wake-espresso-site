@@ -261,8 +261,10 @@
     }
 
     @keyframes boatComeBack {
-      from { transform: translateX(calc(-50% + 140vw)); opacity: 1; }
-      to   { transform: translateX(-50%); opacity: 1; }
+      0%   { transform: translateX(calc(-50% + 140vw)); opacity: 1; }
+      75%  { transform: translateX(-50%); opacity: 1; }
+      88%  { transform: translateX(calc(-50% - 40px)); opacity: 1; }
+      100% { transform: translateX(-50%); opacity: 1; }
     }
 
     @keyframes fadeUp {
