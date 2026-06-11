@@ -219,14 +219,6 @@
       transition: color 0.2s, background 0.2s, border-color 0.2s;
     }
 
-    .tab-photo-frame {
-      background: white;
-      border: 2px solid #ddd;
-      padding: 10px 10px 40px;
-      max-width: calc(400px + 24px);
-      margin: 0 auto;
-    }
-
     .tab-btn.active {
       background: var(--color-brand-blue);
       color: var(--color-brand-cream);
@@ -729,7 +721,7 @@
 
     <!-- ABOUT -->
     <div id="tab-about" class="tab-panel">
-      <div class="tab-photo-frame" style="margin-bottom: 1.5rem;"><img src="images/IMG_7156.jpeg" alt="Wake Espresso" style="width: 100%; display: block; border-radius: 1rem;"></div>
+      <img src="images/IMG_7156.jpeg" alt="Wake Espresso" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 1.5rem;">
       <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111; text-align: center; padding: 0.5rem 0 1.25rem;">Locally Brewed, Lake Approved</p>
       <p style="font-size: 0.95rem; line-height: 1.8; color: #444; text-align: left; padding: 0 0 2.25rem; text-indent: 1.5em;">Founded by Canyon Lake natives, Wake Espresso is all about great coffee and lake vibes. Whether you're heading out on the water or just passing through, grab a handcrafted coffee, tea, or espresso drink from our convenient drive-thru or walk-up window.</p>
       <div class="feed-header">
@@ -790,7 +782,7 @@
     <!-- MENU -->
     <div id="tab-menu" class="tab-panel active">
 
-    <div class="tab-photo-frame" style="margin-bottom: 24px;"><img src="images/DSC08289.jpeg" alt="Wake Espresso" style="width: 100%; display: block; border-radius: 1rem;"></div>
+    <img src="images/DSC08289.jpeg" alt="Wake Espresso" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 24px;">
 
     <!-- SIGNATURE LATTES -->
     <section class="menu-section">
@@ -1083,10 +1075,8 @@
 
     <!-- CONTACT -->
     <div id="tab-contact" class="tab-panel">
-      <div class="tab-photo-frame" style="margin-bottom: 24px;">
-      <div id="contact-img-wrap" style="position: relative;">
-        <img src="images/IMG_7962.jpeg" alt="Wake Espresso" style="width: 100%; display: block; border-radius: 1rem;">
-      </div>
+      <div id="contact-img-wrap" style="position: relative; max-width: 400px; margin: 0 auto 24px;">
+        <img src="images/IMG_7962.jpeg" alt="Wake Espresso" style="width: 100%; display: block;">
       </div>
       <div class="info-block">
         <div class="section-title"><span>Location</span></div>
@@ -1154,9 +1144,6 @@
       if (name === 'contact' && !window._mapInit) initMap();
     }
 
-    document.querySelectorAll('.tab-photo-frame').forEach(frame => {
-      frame.style.transform = 'rotate(' + (Math.random() * 4 - 2).toFixed(2) + 'deg)';
-    });
 
     // Randomize float rotation each cycle, within ±1.5deg
     function randomizeFloat(el) {
