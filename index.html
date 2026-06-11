@@ -234,8 +234,8 @@
 
     @keyframes waterFloat {
       0%   { transform: translateY(0px) rotate(0deg); }
-      25%  { transform: translateY(-5px) rotate(1.5deg); }
-      75%  { transform: translateY(5px) rotate(-1.5deg); }
+      25%  { transform: translateY(-5px) rotate(var(--rot-a, 1.5deg)); }
+      75%  { transform: translateY(5px) rotate(var(--rot-b, -1.5deg)); }
       100% { transform: translateY(0px) rotate(0deg); }
     }
 
@@ -1099,6 +1099,18 @@
       panel.classList.add('animate-in');
       if (name === 'contact' && !window._mapInit) initMap();
     }
+
+    // Randomize float rotation each cycle, within ±1.5deg
+    function randomizeFloat(el) {
+      el.style.setProperty('--rot-a', (Math.random() * 3 - 1.5).toFixed(2) + 'deg');
+      el.style.setProperty('--rot-b', (Math.random() * 3 - 1.5).toFixed(2) + 'deg');
+    }
+    [document.querySelector('.menu-header img'), document.getElementById('refill-coffee')].forEach(el => {
+      randomizeFloat(el);
+      el.addEventListener('animationiteration', e => {
+        if (e.animationName === 'waterFloat') randomizeFloat(el);
+      });
+    });
 
     // Keep the active tab pulse in phase with the logo float animation
     function syncTabPulse(btn) {
