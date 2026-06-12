@@ -656,6 +656,21 @@
       cursor: pointer;
     }
 
+    #game-summary {
+      position: absolute;
+      top: 2.5rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      color: white;
+      line-height: 1.8;
+    }
+
+    #game-summary .cup-num { font-size: 1.25em; }
+
     #refill-btns {
       display: flex;
       flex-direction: column;
@@ -1155,6 +1170,10 @@
   </div>
 
   <div id="gameover-screen">
+    <div id="game-summary">
+      <div><span class="cup-num" id="cups-got">0</span> OF <span class="cup-num" id="cups-total">0</span></div>
+      <div>CUPS</div>
+    </div>
     <div id="refill-coffee">☕️</div>
     <h1 class="game-title">Refill coffee?</h1>
     <div id="refill-btns">
@@ -1293,7 +1312,7 @@
 
     let gameRunning = false;
     let gameRAF = null;
-    let playerY = 0, playerV = 0, score = 0, steering = false;
+    let playerY = 0, playerV = 0, score = 0, cupsTotal = 0, steering = false;
     let items = [], lastSpawn = 0, lastVolcano = 0, lastIsland = 0, lastTime = 0;
 
     function launchGame() {
@@ -1310,6 +1329,7 @@
       items.forEach(it => it.el.remove());
       items = [];
       score = 0;
+      cupsTotal = 0;
       scoreEl.textContent = '00';
       playerY = (gameArea.clientHeight - playerEl.offsetHeight) / 2;
       playerV = 0;
@@ -1372,6 +1392,7 @@
         it.x += 220 * dt;
         it.el.style.transform = 'translateX(' + it.x + 'px)';
         if (it.x > areaW + 60) {
+          if (it.type === '☕️') cupsTotal++;
           it.el.remove();
           items.splice(i, 1);
           continue;
@@ -1379,6 +1400,7 @@
         if (collides(it.el)) {
           if (it.type === '☕️') {
             score++;
+            cupsTotal++;
             scoreEl.textContent = String(score).padStart(2, '0');
             it.el.remove();
             items.splice(i, 1);
@@ -1400,6 +1422,8 @@
     function endGame() {
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
+      document.getElementById('cups-got').textContent = score;
+      document.getElementById('cups-total').textContent = cupsTotal;
       setTimeout(() => {
         gameScreen.classList.remove('visible');
         setTimeout(() => {
