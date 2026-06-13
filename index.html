@@ -17,7 +17,7 @@
     html, body { overflow-x: hidden; }
 
     html.blackout-mode, html.blackout-mode body { background: #000 !important; height: 100%; overflow: hidden; }
-    html.whiteout-mode, html.whiteout-mode body { background: #fff !important; height: 100%; overflow: hidden; }
+    html.whiteout-mode, html.whiteout-mode body { background: #fffde8 !important; height: 100%; overflow: hidden; }
 
     html { font-size: 16px; }
     @media (min-width: 600px) { html { font-size: 20px; } }
@@ -34,7 +34,7 @@
     .menu-wrap {
       max-width: 680px;
       margin: 0 auto;
-      background: white;
+      background: var(--color-brand-cream);
       padding: 2rem 1.75rem;
       position: relative;
       outline: 6px solid var(--color-brand-blue);
@@ -378,7 +378,7 @@
 
     .feed-footer a:hover {
       background: var(--color-brand-blue);
-      color: white;
+      color: var(--color-brand-cream);
     }
 
     /* About & Contact */
@@ -432,7 +432,7 @@
     .leaflet-control-attribution {
       font-size: 8px !important;
       opacity: 0.4;
-      background: rgba(255, 255, 255, 0.5) !important;
+      background: rgba(255, 253, 232, 0.5) !important;
       padding: 0 3px !important;
     }
     .leaflet-control-attribution a { color: #888 !important; }
@@ -453,7 +453,7 @@
 
     .directions-btn:hover {
       background: var(--color-brand-blue);
-      color: white;
+      color: var(--color-brand-cream);
     }
 
     /* Reviews carousel */
@@ -521,7 +521,7 @@
 
     .review-arrow:hover {
       background: var(--color-brand-blue);
-      color: white;
+      color: var(--color-brand-cream);
     }
 
     .review-dots {
@@ -668,8 +668,8 @@
       font-size: 1rem;
       letter-spacing: 0.15em;
       background: var(--color-brand-blue);
-      color: white;
-      border: 4px dotted white;
+      color: var(--color-brand-cream);
+      border: 4px dotted var(--color-brand-cream);
       border-radius: 10px;
       cursor: pointer;
       user-select: none;
@@ -688,8 +688,8 @@
       font-size: 1rem;
       letter-spacing: 0.15em;
       background: var(--color-brand-blue);
-      color: white;
-      border: 4px dotted white;
+      color: var(--color-brand-cream);
+      border: 4px dotted var(--color-brand-cream);
       border-radius: 10px;
       padding: 1.1rem 0;
       width: 12rem;
@@ -706,7 +706,7 @@
       font-family: 'Press Start 2P', monospace;
       font-size: 1rem;
       letter-spacing: 0.15em;
-      color: white;
+      color: var(--color-brand-cream);
       line-height: 1.8;
     }
 
@@ -735,7 +735,7 @@
       transform: translateX(-50%);
       font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
       font-size: 0.85rem;
-      color: white;
+      color: var(--color-brand-cream);
     }
 
     #tired-dog-track {
@@ -779,7 +779,7 @@
     #whiteout {
       position: fixed;
       inset: -50vh 0;
-      background: #fff;
+      background: var(--color-brand-cream);
       z-index: 99999;
       display: none;
       align-items: center;
@@ -1572,7 +1572,7 @@
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
       document.documentElement.classList.add('whiteout-mode');
-      setThemeColor('#ffffff');
+      setThemeColor('#fffde8');
       document.getElementById('whiteout').style.display = 'flex';
       const firstDog = makeWhiteoutDog(true);
       const island = document.getElementById('whiteout-island');
