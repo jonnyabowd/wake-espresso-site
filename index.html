@@ -1171,7 +1171,7 @@
 
   <div id="gameover-screen">
     <div id="game-summary">
-      <div><span class="cup-num" id="cups-got">0</span> OF <span class="cup-num" id="cups-total">0</span></div>
+      <div><span class="cup-num" id="cups-got">0</span></div>
       <div>CUPS</div>
     </div>
     <div id="refill-coffee">☕️</div>
@@ -1312,7 +1312,7 @@
 
     let gameRunning = false;
     let gameRAF = null;
-    let playerY = 0, playerV = 0, score = 0, cupsTotal = 0, steering = false, gameSpeed = 1;
+    let playerY = 0, playerV = 0, score = 0, steering = false, gameSpeed = 1;
     let items = [], lastSpawn = 0, lastVolcano = 0, lastIsland = 0, lastTime = 0;
 
     function launchGame() {
@@ -1329,7 +1329,6 @@
       items.forEach(it => it.el.remove());
       items = [];
       score = 0;
-      cupsTotal = 0;
       gameSpeed = 1;
       scoreEl.textContent = '00';
       playerY = (gameArea.clientHeight - playerEl.offsetHeight) / 2;
@@ -1393,7 +1392,6 @@
         it.x += 220 * gameSpeed * dt;
         it.el.style.transform = 'translateX(' + it.x + 'px)';
         if (it.x > areaW + 60) {
-          if (it.type === '☕️') cupsTotal++;
           it.el.remove();
           items.splice(i, 1);
           continue;
@@ -1401,7 +1399,6 @@
         if (collides(it.el)) {
           if (it.type === '☕️') {
             score++;
-            cupsTotal++;
             gameSpeed *= 1.05;
             scoreEl.textContent = String(score).padStart(2, '0');
             it.el.remove();
@@ -1425,7 +1422,6 @@
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
       document.getElementById('cups-got').textContent = score;
-      document.getElementById('cups-total').textContent = cupsTotal;
       setTimeout(() => {
         gameScreen.classList.remove('visible');
         setTimeout(() => {
