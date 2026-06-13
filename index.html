@@ -1499,11 +1499,13 @@
     }
 
     function setThemeColor(color) {
-      document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.remove());
-      const meta = document.createElement('meta');
-      meta.name = 'theme-color';
-      meta.content = color;
-      document.head.appendChild(meta);
+      let meta = document.querySelector('meta[name="theme-color"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'theme-color';
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', color);
     }
 
     function volcanoBlackout() {
