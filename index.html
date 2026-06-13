@@ -1312,7 +1312,7 @@
 
     let gameRunning = false;
     let gameRAF = null;
-    let playerY = 0, playerV = 0, score = 0, cupsTotal = 0, steering = false;
+    let playerY = 0, playerV = 0, score = 0, cupsTotal = 0, steering = false, gameSpeed = 1;
     let items = [], lastSpawn = 0, lastVolcano = 0, lastIsland = 0, lastTime = 0;
 
     function launchGame() {
@@ -1330,6 +1330,7 @@
       items = [];
       score = 0;
       cupsTotal = 0;
+      gameSpeed = 1;
       scoreEl.textContent = '00';
       playerY = (gameArea.clientHeight - playerEl.offsetHeight) / 2;
       playerV = 0;
@@ -1365,15 +1366,15 @@
       const dt = Math.min((now - lastTime) / 1000, 0.05);
       lastTime = now;
 
-      playerV += (steering ? -2600 : 1200) * dt;
-      playerV = Math.max(-520, Math.min(520, playerV));
+      playerV += (steering ? -2600 : 1200) * gameSpeed * dt;
+      playerV = Math.max(-520 * gameSpeed, Math.min(520 * gameSpeed, playerV));
       playerY += playerV * dt;
       const maxY = gameArea.clientHeight - playerEl.offsetHeight;
       if (playerY < 0) { playerY = 0; playerV = 0; }
       if (playerY > maxY) { playerY = maxY; playerV = 0; }
       playerEl.style.top = playerY + 'px';
 
-      if (now - lastSpawn > 1100) {
+      if (now - lastSpawn > 1100 / gameSpeed) {
         lastSpawn = now;
         spawnItem(Math.random() < 0.7 ? '⛰️' : '☕️');
       }
@@ -1389,7 +1390,7 @@
       const areaW = gameArea.clientWidth;
       for (let i = items.length - 1; i >= 0; i--) {
         const it = items[i];
-        it.x += 220 * dt;
+        it.x += 220 * gameSpeed * dt;
         it.el.style.transform = 'translateX(' + it.x + 'px)';
         if (it.x > areaW + 60) {
           if (it.type === '☕️') cupsTotal++;
@@ -1401,6 +1402,7 @@
           if (it.type === '☕️') {
             score++;
             cupsTotal++;
+            gameSpeed *= 1.05;
             scoreEl.textContent = String(score).padStart(2, '0');
             it.el.remove();
             items.splice(i, 1);
