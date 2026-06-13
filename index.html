@@ -1498,11 +1498,19 @@
       }, 1000);
     }
 
+    function setThemeColor(color) {
+      document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.remove());
+      const meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      meta.content = color;
+      document.head.appendChild(meta);
+    }
+
     function volcanoBlackout() {
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
       document.documentElement.classList.add('blackout-mode');
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+      setThemeColor('#000000');
       document.getElementById('blackout').style.display = 'block';
     }
 
@@ -1510,7 +1518,7 @@
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
       document.documentElement.classList.add('whiteout-mode');
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
+      setThemeColor('#ffffff');
       document.getElementById('whiteout').style.display = 'flex';
       const firstDog = makeWhiteoutDog(true);
       const island = document.getElementById('whiteout-island');
