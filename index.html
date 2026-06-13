@@ -17,7 +17,7 @@
     html, body { overflow-x: hidden; }
 
     html.blackout-mode, html.blackout-mode body { background: #000 !important; height: 100%; overflow: hidden; }
-    html.whiteout-mode, html.whiteout-mode body { background: #fffde8 !important; height: 100%; overflow: hidden; }
+    html.whiteout-mode, html.whiteout-mode body { background: var(--color-brand-cream) !important; height: 100%; overflow: hidden; }
 
     html { font-size: 16px; }
     @media (min-width: 600px) { html { font-size: 20px; } }
@@ -1366,7 +1366,7 @@
         className: '',
         html: `<svg width="30" height="38" viewBox="0 0 30 38" xmlns="http://www.w3.org/2000/svg">
           <path d="M15 0C6.716 0 0 6.716 0 15c0 9.375 15 23 15 23S30 24.375 30 15C30 6.716 23.284 0 15 0z" fill="#0cc0df"/>
-          <circle cx="15" cy="15" r="5.5" fill="#fffde8"/>
+          <circle cx="15" cy="15" r="5.5" fill="#fffef5"/>
         </svg>`,
         iconSize: [30, 38],
         iconAnchor: [15, 38],
@@ -1572,7 +1572,7 @@
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
       document.documentElement.classList.add('whiteout-mode');
-      setThemeColor('#fffde8');
+      setThemeColor('#fffef5');
       document.getElementById('whiteout').style.display = 'flex';
       const firstDog = makeWhiteoutDog(true);
       const island = document.getElementById('whiteout-island');

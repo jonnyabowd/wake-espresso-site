@@ -1,7 +1,7 @@
 :root {
   /* Brand Colors */
   --color-brand-blue: #0cc0df;
-  --color-brand-cream: #fffde8;
+  --color-brand-cream: hsl(55, 100%, 98%);
   --color-brand-grey: #545454;
   --color-text-muted: #aaaaaa;
 
