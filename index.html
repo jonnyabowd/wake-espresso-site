@@ -776,25 +776,22 @@
       cursor: pointer;
     }
 
-    .whiteout-dog .dog-walk {
+    .whiteout-dog span {
       position: absolute;
       top: 0;
       left: 0;
       font-size: 2rem;
       line-height: 1;
-      z-index: 1;
       animation: tiredDogWalk 4s linear infinite;
     }
 
-    .whiteout-dog .dog-island {
-      position: absolute;
-      top: 0.2rem;
-      left: 50%;
-      transform: translateX(-50%);
+    #whiteout-island {
+      position: fixed;
+      z-index: 99999;
       font-size: 2rem;
       line-height: 1;
-      z-index: 0;
       pointer-events: none;
+      display: none;
     }
   </style>
 </head>
@@ -1230,6 +1227,7 @@
 
   <div id="blackout"></div>
   <div id="whiteout"><img src="images/WE_logo.svg" alt="Wake Espresso"></div>
+  <div id="whiteout-island">🏝️</div>
 
   <script>
     function switchTab(name) {
@@ -1490,7 +1488,12 @@
       document.documentElement.classList.add('whiteout-mode');
       document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
       document.getElementById('whiteout').style.display = 'flex';
-      makeWhiteoutDog(true);
+      const firstDog = makeWhiteoutDog(true);
+      const island = document.getElementById('whiteout-island');
+      const dogRect = firstDog.getBoundingClientRect();
+      island.style.display = 'block';
+      island.style.top = dogRect.top + 'px';
+      island.style.left = (dogRect.left + dogRect.width / 2 - island.offsetWidth / 2) + 'px';
     }
 
     let whiteoutTaps = 0;
@@ -1523,7 +1526,7 @@
     function makeWhiteoutDog(belowLogo) {
       const dog = document.createElement('div');
       dog.className = 'whiteout-dog';
-      dog.innerHTML = '<span class="dog-island">🏝️</span><span class="dog-walk">🐕</span>';
+      dog.innerHTML = '<span>🐕</span>';
       document.body.appendChild(dog);
       placeWhiteoutDog(dog, belowLogo);
       dog.addEventListener('click', e => {
@@ -1534,6 +1537,7 @@
         whiteoutTaps++;
         if (whiteoutTaps % 3 === 0) makeWhiteoutDog(false);
       });
+      return dog;
     }
 
     document.querySelector('#whiteout img').addEventListener('click', () => location.reload());
