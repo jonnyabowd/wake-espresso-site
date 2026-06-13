@@ -760,6 +760,24 @@
       cursor: pointer;
       animation: waterFloat 8s ease-in-out infinite;
     }
+
+    #whiteout-dog {
+      position: fixed;
+      z-index: 100000;
+      width: 90px;
+      height: 2.5rem;
+      display: none;
+      cursor: pointer;
+    }
+
+    #whiteout-dog span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 2rem;
+      line-height: 1;
+      animation: tiredDogWalk 4s linear infinite;
+    }
   </style>
 </head>
 <body>
@@ -1194,6 +1212,7 @@
 
   <div id="blackout"></div>
   <div id="whiteout"><img src="images/WE_logo.svg" alt="Wake Espresso"></div>
+  <div id="whiteout-dog"><span>🐕</span></div>
 
   <script>
     function switchTab(name) {
@@ -1454,7 +1473,43 @@
       document.documentElement.classList.add('whiteout-mode');
       document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
       document.getElementById('whiteout').style.display = 'flex';
+      whiteoutDog.style.display = 'block';
+      placeWhiteoutDog(true);
     }
+
+    const whiteoutDog = document.getElementById('whiteout-dog');
+
+    function placeWhiteoutDog(belowLogo) {
+      const dogW = whiteoutDog.offsetWidth;
+      const dogH = whiteoutDog.offsetHeight;
+      const logo = document.querySelector('#whiteout img').getBoundingClientRect();
+      if (belowLogo) {
+        whiteoutDog.style.left = ((window.innerWidth - dogW) / 2) + 'px';
+        whiteoutDog.style.top = (logo.bottom + 16) + 'px';
+        return;
+      }
+      const margin = 12, pad = 16;
+      for (let i = 0; i < 100; i++) {
+        const x = margin + Math.random() * (window.innerWidth - dogW - margin * 2);
+        const y = margin + Math.random() * (window.innerHeight - dogH - margin * 2);
+        const overlap = x < logo.right + pad && x + dogW > logo.left - pad &&
+                        y < logo.bottom + pad && y + dogH > logo.top - pad;
+        if (!overlap) {
+          whiteoutDog.style.left = x + 'px';
+          whiteoutDog.style.top = y + 'px';
+          return;
+        }
+      }
+      whiteoutDog.style.left = margin + 'px';
+      whiteoutDog.style.top = margin + 'px';
+    }
+
+    whiteoutDog.addEventListener('click', e => {
+      e.stopPropagation();
+      whiteoutDog.style.display = 'none';
+      placeWhiteoutDog(false);
+      whiteoutDog.style.display = 'block';
+    });
 
     document.querySelector('#whiteout img').addEventListener('click', () => location.reload());
 
