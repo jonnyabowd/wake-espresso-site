@@ -617,13 +617,7 @@
       font-size: 3.125rem;
       line-height: 1;
       z-index: 2;
-      animation: playerBob 1.2s ease-in-out infinite;
-    }
-
-    @keyframes playerBob {
-      0%   { transform: rotate(0deg); }
-      50%  { transform: rotate(6deg); }
-      100% { transform: rotate(0deg); }
+      transition: transform 0.2s ease;
     }
 
     #player span { position: absolute; inset: 0; }
@@ -1438,6 +1432,7 @@
       if (playerY < 0) { playerY = 0; playerV = 0; }
       if (playerY > maxY) { playerY = maxY; playerV = 0; }
       playerEl.style.top = playerY + 'px';
+      playerEl.style.transform = 'rotate(' + (steering ? -10 : 10) + 'deg)';
 
       if (now - lastSpawn > 1100 / gameSpeed) {
         lastSpawn = now;
