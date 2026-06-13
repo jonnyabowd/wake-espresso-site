@@ -776,13 +776,25 @@
       cursor: pointer;
     }
 
-    .whiteout-dog span {
+    .whiteout-dog .dog-walk {
       position: absolute;
       top: 0;
       left: 0;
       font-size: 2rem;
       line-height: 1;
+      z-index: 1;
       animation: tiredDogWalk 4s linear infinite;
+    }
+
+    .whiteout-dog .dog-island {
+      position: absolute;
+      top: 0.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      line-height: 1;
+      z-index: 0;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -1511,7 +1523,7 @@
     function makeWhiteoutDog(belowLogo) {
       const dog = document.createElement('div');
       dog.className = 'whiteout-dog';
-      dog.innerHTML = '<span>🐕</span>';
+      dog.innerHTML = '<span class="dog-island">🏝️</span><span class="dog-walk">🐕</span>';
       document.body.appendChild(dog);
       placeWhiteoutDog(dog, belowLogo);
       dog.addEventListener('click', e => {
