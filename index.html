@@ -592,6 +592,17 @@
       width: 26vw;
       max-width: 160px;
       flex-shrink: 0;
+      position: relative;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .falling-cup {
+      position: absolute;
+      font-size: 2.5rem;
+      line-height: 1;
+      z-index: 1;
+      pointer-events: none;
     }
 
     @keyframes arcadeBlink {
@@ -1381,6 +1392,23 @@
     let gameRAF = null;
     let playerY = 0, playerV = 0, score = 0, steering = false, gameSpeed = 1;
     let items = [], lastSpawn = 0, lastVolcano = 0, lastIsland = 0, lastTime = 0;
+    let fallingCups = [];
+
+    const gameLogo = document.getElementById('game-logo');
+    gameLogo.addEventListener('click', () => {
+      if (!gameRunning) return;
+      const screenRect = gameScreen.getBoundingClientRect();
+      const logoRect = gameLogo.getBoundingClientRect();
+      const cup = document.createElement('div');
+      cup.className = 'falling-cup';
+      cup.textContent = '☕️';
+      gameScreen.appendChild(cup);
+      const cupW = cup.offsetWidth || 40;
+      cup.style.left = (logoRect.left - screenRect.left + logoRect.width / 2 - cupW / 2) + 'px';
+      const y = logoRect.bottom - screenRect.top - 20;
+      cup.style.top = y + 'px';
+      fallingCups.push({ el: cup, y });
+    });
 
     function launchGame() {
       pageEls.forEach(s => document.querySelector(s).classList.add('page-fade-out'));
@@ -1395,6 +1423,8 @@
     function startGame() {
       items.forEach(it => it.el.remove());
       items = [];
+      fallingCups.forEach(c => c.el.remove());
+      fallingCups = [];
       score = 0;
       gameSpeed = 1;
       scoreEl.textContent = '00';
@@ -1483,6 +1513,23 @@
           }
         }
       }
+      const screenH = gameScreen.clientHeight;
+      for (let i = fallingCups.length - 1; i >= 0; i--) {
+        const c = fallingCups[i];
+        c.y += 360 * gameSpeed * dt;
+        c.el.style.top = c.y + 'px';
+        if (collides(c.el)) {
+          gameSpeed *= 1.05;
+          c.el.remove();
+          fallingCups.splice(i, 1);
+          continue;
+        }
+        if (c.y > screenH + 60) {
+          c.el.remove();
+          fallingCups.splice(i, 1);
+        }
+      }
+
       gameRAF = requestAnimationFrame(tick);
     }
 
