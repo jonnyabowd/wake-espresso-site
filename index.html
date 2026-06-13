@@ -1302,10 +1302,9 @@
       window._mapInit = true;
       const lat = 29.8446598, lon = -98.2722146;
 
-      const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lon], 16);
+      const map = L.map('map', { scrollWheelZoom: false, attributionControl: false }).setView([lat, lon], 16);
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> &copy; <a href="https://carto.com">CARTO</a>',
         maxZoom: 19
       }).addTo(map);
 
