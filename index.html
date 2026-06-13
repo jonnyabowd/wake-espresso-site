@@ -1290,6 +1290,19 @@
     let boatBusy = false;
     let boatRunCount = 0;
 
+    function spawnContactDog() {
+      const wrap = document.getElementById('contact-img-wrap');
+      if (wrap.querySelector('.contact-dog')) return;
+      const dog = document.createElement('div');
+      dog.className = 'contact-dog';
+      dog.textContent = '🐕';
+      dog.style.cssText = 'position: absolute; bottom: 8%; right: 22%; font-size: 2.1rem; line-height: 1; cursor: pointer; animation: fadeUp 0.5s ease forwards;';
+      dog.addEventListener('click', launchGame);
+      wrap.appendChild(dog);
+    }
+
+    document.querySelector('#contact-img-wrap img').addEventListener('click', spawnContactDog);
+
     boat.addEventListener('click', () => {
       if (boatBusy) return;
       boatBusy = true;
@@ -1308,13 +1321,7 @@
               boat.style.animation = '';
               boatBusy = false;
               boatRunCount++;
-              if (boatRunCount === 1) {
-                const dog = document.createElement('div');
-                dog.textContent = '🐕';
-                dog.style.cssText = 'position: absolute; bottom: 8%; right: 22%; font-size: 2.1rem; line-height: 1; cursor: pointer; animation: fadeUp 0.5s ease forwards;';
-                dog.addEventListener('click', launchGame);
-                document.getElementById('contact-img-wrap').appendChild(dog);
-              }
+              if (boatRunCount === 1) spawnContactDog();
               if (boatRunCount >= 3) launchGame();
             });
           }, 2000);
