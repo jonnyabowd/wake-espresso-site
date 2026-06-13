@@ -1518,7 +1518,10 @@
         const c = fallingCups[i];
         c.y += 360 * gameSpeed * dt;
         c.el.style.top = c.y + 'px';
-        if (collides(c.el)) {
+        const p = playerEl.getBoundingClientRect();
+        const r = c.el.getBoundingClientRect();
+        const cupMid = r.top + r.height / 2;
+        if (cupMid >= p.top && cupMid <= p.bottom) {
           gameSpeed *= 1.05;
           c.el.remove();
           fallingCups.splice(i, 1);
