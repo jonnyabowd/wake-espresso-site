@@ -589,6 +589,13 @@
       font-size: 3.125rem;
       line-height: 1;
       z-index: 2;
+      animation: playerBob 1.2s ease-in-out infinite;
+    }
+
+    @keyframes playerBob {
+      0%   { transform: rotate(0deg); }
+      50%  { transform: rotate(6deg); }
+      100% { transform: rotate(0deg); }
     }
 
     #player span { position: absolute; inset: 0; }
