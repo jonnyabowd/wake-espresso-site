@@ -578,7 +578,21 @@
       animation: arcadeBlink 1s step-end infinite;
     }
 
-    #game-screen .game-title { text-align: left; font-size: 6.72vw; }
+    #game-screen .game-title { text-align: left; font-size: 6.72vw; padding-top: 0; }
+
+    #game-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2.5rem 1rem 0;
+    }
+
+    #game-logo {
+      width: 26vw;
+      max-width: 160px;
+      flex-shrink: 0;
+    }
 
     @keyframes arcadeBlink {
       0%   { opacity: 1; }
@@ -1209,7 +1223,10 @@
 
   <!-- Wake the Lake game -->
   <div id="game-screen">
-    <h1 class="game-title">Wake the<br>Lake...</h1>
+    <div id="game-header">
+      <h1 class="game-title">Wake the<br>Lake...</h1>
+      <img id="game-logo" src="images/WE_icon_8bit.svg" alt="Wake Espresso">
+    </div>
     <div id="game-area">
       <div id="player"><span>🐕</span><span>🚤</span></div>
     </div>
