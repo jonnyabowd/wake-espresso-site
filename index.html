@@ -1627,7 +1627,19 @@
       return dog;
     }
 
-    document.querySelector('#whiteout img').addEventListener('click', () => location.reload());
+    let whiteoutClosing = false;
+    document.querySelector('#whiteout img').addEventListener('click', () => {
+      if (whiteoutClosing) return;
+      whiteoutClosing = true;
+      const w = document.getElementById('whiteout');
+      w.style.transition = 'background-color 0.6s ease';
+      document.querySelectorAll('#whiteout img, .whiteout-dog, #whiteout-island').forEach(el => {
+        el.style.transition = 'opacity 0.4s ease';
+        el.style.opacity = '0';
+      });
+      requestAnimationFrame(() => { w.style.backgroundColor = '#0cc0df'; });
+      setTimeout(() => location.reload(), 700);
+    });
 
     const footerText = document.querySelector('.footer-text');
     new IntersectionObserver((entries, obs) => {
