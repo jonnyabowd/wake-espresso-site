@@ -236,8 +236,15 @@
       100% { transform: translateY(0px) rotate(0deg); }
     }
 
+    @keyframes waterFloatNoRotate {
+      0%   { transform: translateY(0px); }
+      25%  { transform: translateY(-3.75px); }
+      75%  { transform: translateY(3.75px); }
+      100% { transform: translateY(0px); }
+    }
+
     .menu-header img {
-      animation: waterFloat 8s ease-in-out infinite;
+      animation: waterFloatNoRotate 8s ease-in-out infinite;
     }
 
     #boat {
@@ -765,7 +772,7 @@
       width: 56vw;
       max-width: 100%;
       cursor: pointer;
-      animation: waterFloat 8s ease-in-out infinite;
+      animation: waterFloatNoRotate 8s ease-in-out infinite;
     }
 
     .whiteout-dog {
@@ -1247,7 +1254,7 @@
       el.style.setProperty('--rot-a', (Math.random() * 3 - 1.5).toFixed(2) + 'deg');
       el.style.setProperty('--rot-b', (Math.random() * 3 - 1.5).toFixed(2) + 'deg');
     }
-    [document.querySelector('.menu-header img'), document.getElementById('refill-coffee')].forEach(el => {
+    [document.getElementById('refill-coffee')].forEach(el => {
       randomizeFloat(el);
       el.addEventListener('animationiteration', e => {
         if (e.animationName === 'waterFloat') randomizeFloat(el);
