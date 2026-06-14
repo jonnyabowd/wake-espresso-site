@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jonnyabowd.github.io/wake-espresso-site/sitemap.xml

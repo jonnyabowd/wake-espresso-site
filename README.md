@@ -1,2 +1,2 @@
-# wake-expresso-site
-Website for Wake Expresso coffee shop
+# wake-espresso-site
+Website for Wake Espresso coffee shop

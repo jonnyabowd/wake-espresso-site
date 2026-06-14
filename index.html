@@ -4,7 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0cc0df">
-  <title>Wake Espresso</title>
+  <title>Wake Espresso | Drive-Thru Coffee &amp; Espresso in Canyon Lake, TX</title>
+  <meta name="description" content="Wake Espresso is a drive-thru and walk-up coffee shop in Canyon Lake, TX. Handcrafted espresso, signature lattes, energy drinks, teas, and kolaches — locally brewed, lake approved.">
+  <link rel="canonical" href="https://jonnyabowd.github.io/wake-espresso-site/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Wake Espresso">
+  <meta property="og:title" content="Wake Espresso | Drive-Thru Coffee &amp; Espresso in Canyon Lake, TX">
+  <meta property="og:description" content="Handcrafted espresso, signature lattes, energy drinks, teas, and kolaches in Canyon Lake, TX. Locally brewed, lake approved.">
+  <meta property="og:url" content="https://jonnyabowd.github.io/wake-espresso-site/">
+  <meta property="og:image" content="https://jonnyabowd.github.io/wake-espresso-site/images/img_7962.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wake Espresso | Drive-Thru Coffee &amp; Espresso in Canyon Lake, TX">
+  <meta name="twitter:description" content="Handcrafted espresso, signature lattes, energy drinks, teas, and kolaches in Canyon Lake, TX. Locally brewed, lake approved.">
+  <meta name="twitter:image" content="https://jonnyabowd.github.io/wake-espresso-site/images/img_7962.webp">
+
   <link rel="icon" href="favicons/favicon.ico" sizes="any">
   <link rel="icon" href="favicons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
@@ -20,8 +37,51 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Wake Espresso",
+    "description": "Drive-thru and walk-up coffee shop in Canyon Lake, TX serving handcrafted espresso, signature lattes, energy drinks, teas, and kolaches.",
+    "url": "https://jonnyabowd.github.io/wake-espresso-site/",
+    "image": "https://jonnyabowd.github.io/wake-espresso-site/images/img_7962.webp",
+    "telephone": "+1-830-310-1101",
+    "priceRange": "$",
+    "servesCuisine": "Coffee",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8392 FM2673",
+      "addressLocality": "Canyon Lake",
+      "addressRegion": "TX",
+      "postalCode": "78133",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 29.8446598,
+      "longitude": -98.2722146
+    },
+    "sameAs": [
+      "https://www.instagram.com/wakeespresso"
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
+        "opens": "05:30",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Friday", "Saturday"],
+        "opens": "05:30",
+        "closes": "20:00"
+      }
+    ]
+  }
+  </script>
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -74,6 +134,7 @@
       display: flex;
       align-items: center;
       gap: 0.625rem;
+      margin-top: 0;
       margin-bottom: 0.875rem;
     }
 
@@ -836,7 +897,8 @@
   <div class="menu-wrap">
 
     <div class="menu-header">
-      <img src="images/WE_logo.svg" alt="Wake Espresso" style="width: 8.25rem; max-width: 40%;">
+      <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Wake Espresso — Drive-Thru Coffee &amp; Espresso in Canyon Lake, TX</h1>
+      <img src="images/WE_logo.svg" alt="Wake Espresso logo" width="132" height="132" style="width: 8.25rem; max-width: 40%; height: auto;">
     </div>
 
     <div class="tabs">
@@ -847,30 +909,30 @@
 
     <!-- ABOUT -->
     <div id="tab-about" class="tab-panel">
-      <img src="images/IMG_7156.jpeg" alt="Wake Espresso" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 1.5rem;">
+      <img src="images/img_7156.webp" alt="Wake Espresso team in front of the Canyon Lake boat mural" width="800" height="800" loading="lazy" style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto 1.5rem;">
       <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111; text-align: center; padding: 0.5rem 0 1.25rem;">Locally Brewed, Lake Approved</p>
       <p style="font-size: 0.95rem; line-height: 1.8; color: #444; text-align: left; padding: 0 0 2.25rem; text-indent: 1.5em;">Founded by Canyon Lake natives, Wake Espresso is all about great coffee and lake vibes. Whether you're heading out on the water or just passing through, grab a handcrafted coffee, tea, or espresso drink from our convenient drive-thru or walk-up window.</p>
       <div class="feed-header">
-        <div class="section-title"><span>Follow Us</span></div>
+        <h2 class="section-title"><span>Follow Us</span></h2>
         <a href="https://www.instagram.com/wakeespresso" target="_blank" rel="noopener">@wakeespresso</a>
       </div>
       <div class="feed-grid">
-        <div class="feed-item"><img src="images/IMG_0048.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0049.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0052.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0053.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0060.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0055.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0056.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0058.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
-        <div class="feed-item"><img src="images/IMG_0059.jpeg" alt="Wake Espresso"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0048.webp" alt="Dog enjoying a pup cup at the Wake Espresso drive-thru" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0049.webp" alt="Customers in their truck with iced coffees at the Wake Espresso drive-thru" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0052.webp" alt="Wake Espresso barista holding a caramel iced latte" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0053.webp" alt="Friends holding blue and yellow iced drinks at Wake Espresso" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0060.webp" alt="Shiba Inu enjoying a whipped cream pup cup at Wake Espresso" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0055.webp" alt="Wake Espresso green St. Patrick's Day punch drink" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0056.webp" alt="Customers with drinks in front of the Wake Espresso lake mural" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0058.webp" alt="Iced Coco Kiss latte made at Wake Espresso" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
+        <div class="feed-item"><img src="images/img_0059.webp" alt="Wake Espresso baristas behind the espresso bar" width="600" height="600" loading="lazy"><div class="overlay"></div></div>
       </div>
       <div class="feed-footer">
         <a href="https://www.instagram.com/wakeespresso" target="_blank" rel="noopener">View on Instagram</a>
       </div>
 
       <div class="reviews-section">
-        <div class="section-title" style="margin-top: 1.75rem;"><span>Reviews</span></div>
+        <h2 class="section-title" style="margin-top: 1.75rem;"><span>Reviews</span></h2>
         <div class="review-carousel">
           <button class="review-arrow review-prev" onclick="shiftReview(-1)" aria-label="Previous review">&#8592;</button>
           <div class="review-track">
@@ -908,11 +970,11 @@
     <!-- MENU -->
     <div id="tab-menu" class="tab-panel active">
 
-    <img src="images/DSC08289.jpeg" alt="Wake Espresso" style="width: 100%; max-width: 400px; display: block; margin: 0 auto 24px;">
+    <img src="images/dsc08289.webp" alt="Iced latte and blue energy drink held up in front of the Wake Espresso stand" width="800" height="800" fetchpriority="high" style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto 24px;">
 
     <!-- SIGNATURE LATTES -->
     <section class="menu-section">
-      <div class="section-title"><span>Signature Lattes</span></div>
+      <h2 class="section-title"><span>Signature Lattes</span></h2>
       <div class="size-row">
         <div><div class="size-label">SM</div><span class="size-price">4.50</span></div>
         <div><div class="size-label">MED</div><span class="size-price">5.25</span></div>
@@ -947,7 +1009,7 @@
 
     <!-- SIGNATURE ENERGY -->
     <section class="menu-section">
-      <div class="section-title"><span>Signature Energy</span></div>
+      <h2 class="section-title"><span>Signature Energy</span></h2>
       <div class="size-row">
         <div><div class="size-label">SM</div><span class="size-price">4.50</span></div>
         <div><div class="size-label">MED</div><span class="size-price">5.25</span></div>
@@ -982,7 +1044,7 @@
 
     <!-- CLASSIC COFFEE -->
     <section class="menu-section">
-      <div class="section-title"><span>Classic Coffee</span></div>
+      <h2 class="section-title"><span>Classic Coffee</span></h2>
 
       <div class="item">
         <div class="item-header">
@@ -1041,7 +1103,7 @@
 
     <!-- NON-COFFEE -->
     <section class="menu-section">
-      <div class="section-title"><span>Non-Coffee</span></div>
+      <h2 class="section-title"><span>Non-Coffee</span></h2>
       <div class="price-note">+.75 | size</div>
 
       <div class="item">
@@ -1111,7 +1173,7 @@
 
     <!-- KOLACHE -->
     <section class="menu-section">
-      <div class="section-title"><span>Kolache</span></div>
+      <h2 class="section-title"><span>Kolache</span></h2>
       <div class="price-note">3.50</div>
       <div class="two-col">
         <span>Sausage and Cheese</span>
@@ -1121,7 +1183,7 @@
 
     <!-- MUFFINS -->
     <section class="menu-section">
-      <div class="section-title"><span>Muffins</span></div>
+      <h2 class="section-title"><span>Muffins</span></h2>
       <div class="price-note">3.00</div>
       <div class="three-col">
         <span>Blueberry</span>
@@ -1132,7 +1194,7 @@
 
     <!-- ADD A FLAVOR -->
     <section class="menu-section">
-      <div class="section-title"><span>Add a Flavor</span></div>
+      <h2 class="section-title"><span>Add a Flavor</span></h2>
       <div class="price-note">0.75 &nbsp;|&nbsp; SF = Sugar Free</div>
       <div class="flavor-grid">
         <span>Vanilla</span>
@@ -1164,7 +1226,7 @@
 
     <!-- MILK ALTERNATIVES -->
     <section class="menu-section">
-      <div class="section-title"><span>Milk Alternatives</span></div>
+      <h2 class="section-title"><span>Milk Alternatives</span></h2>
       <div class="price-note">0.50</div>
       <div class="two-col">
         <span>Oat Milk</span>
@@ -1176,7 +1238,7 @@
 
     <!-- EXTRAS -->
     <section class="menu-section">
-      <div class="section-title"><span>Extras</span></div>
+      <h2 class="section-title"><span>Extras</span></h2>
       <div class="item">
         <div class="item-header">
           <div class="item-name">Cold Foam</div>
@@ -1202,10 +1264,10 @@
     <!-- CONTACT -->
     <div id="tab-contact" class="tab-panel">
       <div id="contact-img-wrap" style="position: relative; max-width: 400px; margin: 0 auto 24px;">
-        <img src="images/IMG_7962.jpeg" alt="Wake Espresso" style="width: 100%; display: block;">
+        <img src="images/img_7962.webp" alt="Exterior of the Wake Espresso drive-thru coffee stand in Canyon Lake, TX" width="800" height="800" loading="lazy" style="width: 100%; height: auto; display: block;">
       </div>
       <div class="info-block">
-        <div class="section-title"><span>Location</span></div>
+        <h2 class="section-title"><span>Location</span></h2>
         <p>8392 FM2673<br>Canyon Lake, TX 78133</p>
       </div>
       <div id="map"></div>
@@ -1213,7 +1275,7 @@
         <a class="directions-btn" href="https://maps.app.goo.gl/tD8LVoGH7LGiPKmz9" target="_blank" rel="noopener">Get Directions</a>
       </div>
       <div class="info-block">
-        <div class="section-title"><span>Hours</span></div>
+        <h2 class="section-title"><span>Hours</span></h2>
         <table style="margin: 0 auto; font-size: 0.75rem; color: #444; border-collapse: collapse; line-height: 2;">
           <tr><td style="text-align:right; padding-right: 20px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Monday</td><td>5:30AM – 7:00PM</td></tr>
           <tr><td style="text-align:right; padding-right: 20px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Tuesday</td><td>5:30AM – 7:00PM</td></tr>
@@ -1225,7 +1287,7 @@
         </table>
       </div>
       <div class="info-block">
-        <div class="section-title"><span>Contact</span></div>
+        <h2 class="section-title"><span>Contact</span></h2>
         <p style="margin-bottom: 12px;">(830) 310-1101</p>
         <a class="directions-btn" href="tel:+18303101101">Call Us</a>
       </div>
@@ -1364,6 +1426,21 @@
 
     function initMap() {
       window._mapInit = true;
+      if (!document.querySelector('link[data-leaflet]')) {
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        css.setAttribute('data-leaflet', '');
+        document.head.appendChild(css);
+      }
+      if (window.L) { buildMap(); return; }
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.onload = buildMap;
+      document.head.appendChild(script);
+    }
+
+    function buildMap() {
       const lat = 29.8446598, lon = -98.2722146;
 
       const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lon], 16);
