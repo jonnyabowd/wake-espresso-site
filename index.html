@@ -723,7 +723,11 @@
       left: -60px;
       font-size: 2.5rem;
       line-height: 1;
+      z-index: 1;
     }
+
+    .game-wave { z-index: 0; }
+    .game-wave img { display: block; width: 4rem; height: auto; }
 
     #game-score {
       position: absolute;
@@ -1496,7 +1500,7 @@
     let gameRunning = false;
     let gameRAF = null;
     let playerY = 0, playerV = 0, score = 0, steering = false, gameSpeed = 1;
-    let items = [], lastSpawn = 0, lastVolcano = 0, lastIsland = 0, lastTime = 0;
+    let items = [], lastSpawn = 0, lastVolcano = 0, lastIsland = 0, lastWave = 0, lastTime = 0;
     let fallingCups = [];
 
     const gameLogo = document.getElementById('game-logo');
@@ -1539,6 +1543,7 @@
       lastSpawn = performance.now();
       lastVolcano = performance.now();
       lastIsland = performance.now();
+      lastWave = performance.now();
       lastTime = performance.now();
       playerEl.style.top = playerY + 'px';
       gameRunning = true;
@@ -1552,6 +1557,37 @@
       el.style.top = (Math.random() * (gameArea.clientHeight - 50)) + 'px';
       gameArea.appendChild(el);
       items.push({ el, type, x: 0 });
+    }
+
+    // Pick a vertical spot for a wave that's spread out from other objects
+    // still near the entry, so waves don't stack on the items flying in.
+    function pickEntryTop(areaH, h) {
+      const minY = 4, maxY = Math.max(minY, areaH - h - 4);
+      const near = items
+        .filter(it => it.x < 120)
+        .map(it => it.el.offsetTop + (it.el.offsetHeight || 40) / 2);
+      let best = minY + Math.random() * (maxY - minY), bestDist = -1;
+      for (let i = 0; i < 24; i++) {
+        const cand = minY + Math.random() * (maxY - minY);
+        const c = cand + h / 2;
+        let d = Infinity;
+        for (const n of near) d = Math.min(d, Math.abs(c - n));
+        if (d === Infinity || d > 56) return cand;
+        if (d > bestDist) { bestDist = d; best = cand; }
+      }
+      return best;
+    }
+
+    function spawnWave() {
+      const el = document.createElement('div');
+      el.className = 'game-item game-wave';
+      const img = document.createElement('img');
+      img.src = 'images/WE_waves.svg';
+      img.alt = '';
+      el.appendChild(img);
+      gameArea.appendChild(el);
+      el.style.top = pickEntryTop(gameArea.clientHeight, el.offsetHeight || 14) + 'px';
+      items.push({ el, type: 'wave', x: 0, wave: true });
     }
 
     function collides(el) {
@@ -1588,6 +1624,10 @@
         lastIsland = now;
         spawnItem('🏝️');
       }
+      if (now - lastWave > (1100 / gameSpeed) / 4) {
+        lastWave = now;
+        spawnWave();
+      }
 
       const areaW = gameArea.clientWidth;
       for (let i = items.length - 1; i >= 0; i--) {
@@ -1599,6 +1639,7 @@
           items.splice(i, 1);
           continue;
         }
+        if (it.wave) continue;
         if (collides(it.el)) {
           if (it.type === '☕️') {
             score++;
