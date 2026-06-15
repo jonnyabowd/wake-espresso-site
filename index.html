@@ -1766,8 +1766,11 @@
       placeWhiteoutDog(dog, belowLogo);
       dog.addEventListener('click', e => {
         e.stopPropagation();
-        dog.style.display = 'none';
         placeWhiteoutDog(dog, false);
+        // Restart the walk from center; toggle display after placing so
+        // offsetWidth is measured while visible (it reads 0 when hidden).
+        dog.style.display = 'none';
+        void dog.offsetWidth;
         dog.style.display = 'block';
         whiteoutTaps++;
         if (whiteoutTaps % 3 === 0) makeWhiteoutDog(false);
