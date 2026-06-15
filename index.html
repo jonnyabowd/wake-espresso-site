@@ -1681,6 +1681,10 @@
     function placeWhiteoutDog(dog, belowLogo) {
       const dogW = dog.offsetWidth;
       const dogH = dog.offsetHeight;
+      // Start mid-path so the dog spawns at the center of its walk, not pinned
+      // to the right edge where the 0% keyframe (and display toggle) leaves it.
+      const span = dog.querySelector('span');
+      if (span) span.style.animationDelay = (-4 * 0.21875) + 's';
       const logo = document.querySelector('#whiteout img').getBoundingClientRect();
       const margin = 28, pad = 16;
       if (belowLogo) {
