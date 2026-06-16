@@ -727,16 +727,7 @@
     }
 
     .game-wave { z-index: 0; }
-    .game-wave img {
-      display: block;
-      width: 2rem;
-      height: auto;
-      /* Blink at the same rate as the "Wake the Lake..." title. The animation
-         begins when each wave element is created (spawn), and a per-wave
-         negative animation-delay (set in spawnWave) offsets the phase so the
-         visible waves blink out of sync with each other. */
-      animation: arcadeBlink 1s step-end infinite;
-    }
+    .game-wave img { display: block; width: 2rem; height: auto; }
 
     #game-score {
       position: absolute;
@@ -1595,9 +1586,6 @@
       const img = document.createElement('img');
       img.src = 'images/WE_waves.svg';
       img.alt = '';
-      // Random negative delay (within one 1s cycle) so each wave starts its
-      // blink at a different phase — keeps visible waves from blinking in unison.
-      img.style.animationDelay = '-' + Math.random().toFixed(3) + 's';
       el.appendChild(img);
       gameArea.appendChild(el);
       el.style.top = pickEntryTop(gameArea.clientHeight, el.offsetHeight || 14) + 'px';
