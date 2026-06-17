@@ -1647,7 +1647,7 @@
           spawnItem('🏝️');
         }
         // After 65s of play, send out a single fast 🛸 (1.5x item speed).
-        if (!ufoSpawned && now - gameStartTime > 5000) {
+        if (!ufoSpawned && now - gameStartTime > 65000) {
           ufoSpawned = true;
           spawnItem('🛸', 1.5);
         }
