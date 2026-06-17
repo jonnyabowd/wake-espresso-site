@@ -724,9 +724,9 @@
     #player.alien .alien-badge {
       display: block;
       inset: auto;
-      top: -0.1rem;
+      top: 0.2rem;
       left: -0.1rem;
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       z-index: 3;
     }
 
@@ -1652,9 +1652,9 @@
           spawnItem('🛸', 1.5);
         }
       } else {
-        // Boba version: 10x as many ☕️, 90% fewer of everything else.
+        // Boba version: 20x as many ☕️, 90% fewer of everything else.
         // Normal ☕️ interval is ~1100/0.3ms; obstacles ~1100/0.7ms.
-        if (now - lastSpawn > (1100 / 0.3 / 10) / gameSpeed) {
+        if (now - lastSpawn > (1100 / 0.3 / 20) / gameSpeed) {
           lastSpawn = now;
           spawnItem('☕️');
         }
