@@ -1624,8 +1624,9 @@
       const dt = Math.min((now - lastTime) / 1000, 0.05);
       lastTime = now;
 
-      playerV += (steering ? -2600 : 1200) * gameSpeed * dt;
-      playerV = Math.max(-520 * gameSpeed, Math.min(520 * gameSpeed, playerV));
+      // Player rise/fall stays constant; only spawned items speed up with gameSpeed.
+      playerV += (steering ? -2600 : 1200) * dt;
+      playerV = Math.max(-520, Math.min(520, playerV));
       playerY += playerV * dt;
       const maxY = gameArea.clientHeight - playerEl.offsetHeight;
       if (playerY < 0) { playerY = 0; playerV = 0; }
