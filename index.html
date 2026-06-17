@@ -718,6 +718,18 @@
       z-index: -1;
     }
 
+    /* Little alien companion shown only in the boba (post-UFO) game version,
+       smaller and tucked into the top-left of the boat-dog. */
+    #player .alien-badge { display: none; }
+    #player.alien .alien-badge {
+      display: block;
+      inset: auto;
+      top: -0.1rem;
+      left: -0.1rem;
+      font-size: 1.3rem;
+      z-index: 3;
+    }
+
     .game-item {
       position: absolute;
       left: -60px;
@@ -1329,7 +1341,7 @@
       <img id="game-logo" src="images/WE_icon_8bit.svg" alt="Wake Espresso">
     </div>
     <div id="game-area">
-      <div id="player"><span>🐕</span><span>🚤</span></div>
+      <div id="player"><span>🐕</span><span>🚤</span><span class="alien-badge">👾</span></div>
     </div>
     <div id="game-score">00</div>
     <button id="steer-btn">STEER</button>
@@ -1502,8 +1514,9 @@
     let gameRunning = false;
     let gameRAF = null;
     let playerY = 0, playerV = 0, score = 0, steering = false, gameSpeed = 1;
-    let items = [], lastSpawn = 0, lastVolcano = 0, lastIsland = 0, lastWave = 0, lastTime = 0;
+    let items = [], lastSpawn = 0, lastObstacle = 0, lastVolcano = 0, lastIsland = 0, lastWave = 0, lastTime = 0;
     let fallingCups = [];
+    let gameMode = 'normal', gameStartTime = 0, ufoSpawned = false;
 
     const gameLogo = document.getElementById('game-logo');
     gameLogo.addEventListener('click', () => {
@@ -1531,7 +1544,8 @@
       }, 650);
     }
 
-    function startGame() {
+    function startGame(mode) {
+      gameMode = mode || 'normal';
       items.forEach(it => it.el.remove());
       items = [];
       fallingCups.forEach(c => c.el.remove());
@@ -1542,23 +1556,28 @@
       playerY = (gameArea.clientHeight - playerEl.offsetHeight) / 2;
       playerV = 0;
       steering = false;
-      lastSpawn = performance.now();
-      lastVolcano = performance.now();
-      lastIsland = performance.now();
-      lastWave = performance.now();
-      lastTime = performance.now();
+      ufoSpawned = false;
+      const t = performance.now();
+      lastSpawn = t;
+      lastObstacle = t;
+      lastVolcano = t;
+      lastIsland = t;
+      lastWave = t;
+      lastTime = t;
+      gameStartTime = t;
+      playerEl.classList.toggle('alien', gameMode === 'alien');
       playerEl.style.top = playerY + 'px';
       gameRunning = true;
       gameRAF = requestAnimationFrame(tick);
     }
 
-    function spawnItem(type) {
+    function spawnItem(type, speedMul) {
       const el = document.createElement('div');
       el.className = 'game-item';
       el.textContent = type;
       el.style.top = (Math.random() * (gameArea.clientHeight - 50)) + 'px';
       gameArea.appendChild(el);
-      items.push({ el, type, x: 0 });
+      items.push({ el, type, x: 0, speedMul: speedMul || 1 });
     }
 
     // Pick a vertical spot for a wave that's spread out from other objects
@@ -1614,17 +1633,43 @@
       playerEl.style.top = playerY + 'px';
       playerEl.style.transform = 'rotate(' + (steering ? 15 : -5) + 'deg)';
 
-      if (now - lastSpawn > 1100 / gameSpeed) {
-        lastSpawn = now;
-        spawnItem(Math.random() < 0.7 ? '⛰️' : '☕️');
-      }
-      if (now - lastVolcano > 10000) {
-        lastVolcano = now;
-        spawnItem('🌋');
-      }
-      if (now - lastIsland > 25000) {
-        lastIsland = now;
-        spawnItem('🏝️');
+      if (gameMode === 'normal') {
+        if (now - lastSpawn > 1100 / gameSpeed) {
+          lastSpawn = now;
+          spawnItem(Math.random() < 0.7 ? '⛰️' : '☕️');
+        }
+        if (now - lastVolcano > 10000) {
+          lastVolcano = now;
+          spawnItem('🌋');
+        }
+        if (now - lastIsland > 25000) {
+          lastIsland = now;
+          spawnItem('🏝️');
+        }
+        // After 65s of play, send out a single fast 🛸 (1.5x item speed).
+        if (!ufoSpawned && now - gameStartTime > 65000) {
+          ufoSpawned = true;
+          spawnItem('🛸', 1.5);
+        }
+      } else {
+        // Boba version: 10x as many ☕️, 90% fewer of everything else.
+        // Normal ☕️ interval is ~1100/0.3ms; obstacles ~1100/0.7ms.
+        if (now - lastSpawn > (1100 / 0.3 / 10) / gameSpeed) {
+          lastSpawn = now;
+          spawnItem('☕️');
+        }
+        if (now - lastObstacle > (1100 / 0.7 * 10) / gameSpeed) {
+          lastObstacle = now;
+          spawnItem('🏔️');
+        }
+        if (now - lastVolcano > 100000) {
+          lastVolcano = now;
+          spawnItem('🌋');
+        }
+        if (now - lastIsland > 250000) {
+          lastIsland = now;
+          spawnItem('🏝️');
+        }
       }
       if (now - lastWave > (1100 / gameSpeed) / 4) {
         lastWave = now;
@@ -1634,7 +1679,7 @@
       const areaW = gameArea.clientWidth;
       for (let i = items.length - 1; i >= 0; i--) {
         const it = items[i];
-        it.x += 220 * gameSpeed * dt;
+        it.x += 220 * gameSpeed * (it.speedMul || 1) * dt;
         it.el.style.transform = 'translateX(' + it.x + 'px)';
         if (it.x > areaW + 60) {
           it.el.remove();
@@ -1649,11 +1694,16 @@
             scoreEl.textContent = String(score).padStart(2, '0');
             it.el.remove();
             items.splice(i, 1);
-          } else if (it.type === '⛰️') {
+          } else if (it.type === '⛰️' || it.type === '🏔️') {
             endGame();
             return;
           } else if (it.type === '🏝️') {
             islandWhiteout();
+            return;
+          } else if (it.type === '🛸') {
+            it.el.remove();
+            items.splice(i, 1);
+            startGame('alien');
             return;
           } else {
             volcanoBlackout();
