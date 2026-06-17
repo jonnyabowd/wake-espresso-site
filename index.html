@@ -914,36 +914,6 @@
       pointer-events: none;
       display: none;
     }
-
-    /* Cylindrical "wrapped around a cup" curve: soft inner shadows down the
-       left and right edges of the viewport, fading toward the center. Fixed,
-       non-interactive, and above everything. Only shown when running as an
-       installed PWA (standalone), where there's no browser chrome at the top
-       and bottom to break the full-height edge shadows. */
-    #cup-curve {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2147483647;
-      display: none;
-      background:
-        linear-gradient(to right,
-          rgba(0, 0, 0, 0.45) 0%,
-          rgba(0, 0, 0, 0.16) 6%,
-          rgba(0, 0, 0, 0) 20%),
-        linear-gradient(to left,
-          rgba(0, 0, 0, 0.45) 0%,
-          rgba(0, 0, 0, 0.16) 6%,
-          rgba(0, 0, 0, 0) 20%);
-    }
-
-    @media all and (display-mode: standalone) {
-      #cup-curve { display: block; }
-    }
-
-    /* Fallback for older iOS Safari, which exposes standalone via
-       navigator.standalone rather than the display-mode media query. */
-    html.pwa-standalone #cup-curve { display: block; }
   </style>
 </head>
 <body>
@@ -1383,14 +1353,6 @@
   <div id="blackout"></div>
   <div id="whiteout"><img src="images/WE_logo_8bit.svg" alt="Wake Espresso"></div>
   <div id="whiteout-island">🏝️</div>
-  <div id="cup-curve" aria-hidden="true"></div>
-  <script>
-    // Older iOS Safari signals installed-PWA mode via navigator.standalone
-    // rather than the display-mode media query; flag it for the CSS fallback.
-    if (window.navigator.standalone === true) {
-      document.documentElement.classList.add('pwa-standalone');
-    }
-  </script>
 
   <script>
     function switchTab(name) {
