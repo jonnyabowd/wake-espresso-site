@@ -46,23 +46,3 @@ HTML, CSS, and JavaScript.
 
 There's a little something hidden in the site for the curious. Poke around — you
 might just wake the lake. 🚤
-
-## Project structure
-
-```
-index.html         Single-page site (markup, inline styles + scripts)
-css/tokens.css     Design tokens (brand colors, spacing)
-design-system.md   Design system reference
-js/                ios-pwa-splash helper
-images/            Photos, logos (SVG), and game art
-favicons/          Favicons, touch icons, web manifest
-sitemap.xml        Sitemap
-robots.txt         Crawler directives
-CNAME              Custom domain (wakeespresso.com)
-```
-
-## Hosting
-
-Deployed via **GitHub Pages** from the `main` branch, served on the custom
-domain `wakeespresso.com` (configured by the `CNAME` file). Every push to `main`
-triggers an automatic Pages build and deploy.
