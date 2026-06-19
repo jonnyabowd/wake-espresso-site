@@ -44,15 +44,13 @@ HTML, CSS, and JavaScript.
 
 ### Easter egg
 
-There's a hidden arcade mini-game, **"Wake the Lake"** — a retro endless dodger
-where you steer a boat (and dog) past mountains to collect coffee cups. Tap
-around the boat 🚤 or the storefront photo to find it, and keep playing to
-discover what happens at 65 seconds. 🛸
+There's a little something hidden in the site for the curious. Poke around — you
+might just wake the lake. 🚤
 
 ## Project structure
 
 ```
-index.html         Single-page site (markup, inline styles + scripts, the game)
+index.html         Single-page site (markup, inline styles + scripts)
 css/tokens.css     Design tokens (brand colors, spacing)
 design-system.md   Design system reference
 js/                ios-pwa-splash helper
