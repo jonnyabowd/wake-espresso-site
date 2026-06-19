@@ -1,9 +1,9 @@
 :root {
   /* Brand Colors */
-  --color-brand-blue: #0cc0df;
+  --color-brand-blue: hsl(189, 90%, 46%);
   --color-brand-cream: hsl(55, 100%, 98%);
-  --color-brand-grey: #545454;
-  --color-text-muted: #aaaaaa;
+  --color-brand-grey: hsl(0, 0%, 33%);
+  --color-text-muted: hsl(0, 0%, 67%);
 
   /* Typography */
   --font-family-base: sans-serif;

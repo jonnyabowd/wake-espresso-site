@@ -4,10 +4,10 @@
 
 | Token | Value | Usage |
 |---|---|---|
-| `--color-brand-blue` | `#0cc0df` | Primary brand color, CTA buttons, accents |
+| `--color-brand-blue` | `hsl(189, 90%, 46%)` | Primary brand color, CTA buttons, accents |
 | `--color-brand-cream` | `hsl(55, 100%, 98%)` | Light backgrounds, text on dark |
-| `--color-brand-grey` | `#545454` | Background the logo is designed to sit on |
-| `--color-text-muted` | `#aaaaaa` | De-emphasized text, inactive UI elements |
+| `--color-brand-grey` | `hsl(0, 0%, 33%)` | Background the logo is designed to sit on |
+| `--color-text-muted` | `hsl(0, 0%, 67%)` | De-emphasized text, inactive UI elements |
 
 ## Logo
 
@@ -15,7 +15,7 @@ Files are in `/images/`:
 - `WE_logo.svg` — full wordmark, use at larger sizes
 - `WE_icon.svg` — icon only, use for favicons and small contexts
 
-Logo is designed to display over `--color-brand-grey` (`#545454`).
+Logo is designed to display over `--color-brand-grey` (`hsl(0, 0%, 33%)`).
 
 ## Typography
 
