@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/WE_icon.svg" alt="Wake Espresso" width="160">
+</p>
+
 # Wake Espresso
 
 Marketing and menu website for **Wake Espresso**, a drive-thru and walk-up
