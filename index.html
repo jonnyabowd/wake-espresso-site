@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0cc0df">
+  <meta name="theme-color" content="hsl(189, 90%, 46%)">
   <title>Wake Espresso | Drive-Thru Coffee &amp; Espresso in Canyon Lake, TX</title>
   <meta name="description" content="Wake Espresso is a drive-thru and walk-up coffee shop in Canyon Lake, TX. Handcrafted espresso, signature lattes, energy drinks, teas, and kolaches — locally brewed, lake approved.">
   <link rel="canonical" href="https://jonnyabowd.github.io/wake-espresso-site/">
@@ -37,7 +37,7 @@
   <meta name="apple-mobile-web-app-title" content="Wake Espresso">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <script src="js/ios-pwa-splash.js"></script>
-  <script>iosPWASplash('favicons/apple-touch-icon.png', '#0CC0DF');</script>
+  <script>iosPWASplash('favicons/apple-touch-icon.png', 'hsl(189, 90%, 46%)');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -1763,7 +1763,7 @@
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
       document.documentElement.classList.add('blackout-mode');
-      setThemeColor('#000000');
+      setThemeColor('hsl(0, 0%, 0%)');
       document.getElementById('blackout').style.display = 'block';
     }
 
@@ -1771,7 +1771,7 @@
       gameRunning = false;
       cancelAnimationFrame(gameRAF);
       document.documentElement.classList.add('whiteout-mode');
-      setThemeColor('#fffef5');
+      setThemeColor('hsl(55, 100%, 98%)');
       document.getElementById('whiteout').style.display = 'flex';
       const firstDog = makeWhiteoutDog(true);
       const island = document.getElementById('whiteout-island');
