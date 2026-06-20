@@ -92,7 +92,7 @@
 
     html, body { overflow-x: hidden; }
 
-    html.blackout-mode, html.blackout-mode body { background: #000 !important; height: 100%; overflow: hidden; }
+    html.blackout-mode, html.blackout-mode body { background: hsl(0, 0%, 0%) !important; height: 100%; overflow: hidden; }
     html.whiteout-mode, html.whiteout-mode body { background: var(--color-brand-cream) !important; height: 100%; overflow: hidden; }
 
     html { font-size: 16px; }
@@ -125,7 +125,7 @@
 
     .menu-divider {
       border: none;
-      border-top: 1px solid #ccc;
+      border-top: 1px solid hsl(0, 0%, 80%);
       margin: 0 0 1.5rem;
     }
 
@@ -186,7 +186,7 @@
     .price-note {
       text-align: center;
       font-size: 0.72rem;
-      color: #555;
+      color: hsl(0, 0%, 33%);
       margin-bottom: 0.875rem;
     }
 
@@ -213,12 +213,12 @@
       font-size: 0.72rem;
       font-weight: 400;
       white-space: nowrap;
-      color: #111;
+      color: hsl(0, 0%, 7%);
     }
 
     .item-desc {
       font-size: 0.72rem;
-      color: #555;
+      color: hsl(0, 0%, 33%);
       margin-top: 0.1875rem;
       line-height: 1.55;
       font-weight: 400;
@@ -295,7 +295,7 @@
       text-transform: uppercase;
       color: var(--color-brand-grey);
       cursor: pointer;
-      border-color: #ddd;
+      border-color: hsl(0, 0%, 87%);
       transition: color 0.2s, background 0.2s, border-color 0.2s;
     }
 
@@ -384,7 +384,7 @@
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #888;
+      color: hsl(0, 0%, 53%);
       margin-bottom: 0.625rem;
     }
 
@@ -393,7 +393,7 @@
       align-items: center;
       gap: 0.5rem;
       text-decoration: none;
-      color: #111;
+      color: hsl(0, 0%, 7%);
       font-size: 1.1rem;
       font-weight: 600;
     }
@@ -410,7 +410,7 @@
       position: relative;
       aspect-ratio: 1;
       overflow: hidden;
-      background: #f0f0f0;
+      background: hsl(0, 0%, 94%);
       cursor: pointer;
     }
 
@@ -475,13 +475,13 @@
 
     .info-block p {
       font-size: 0.78rem;
-      color: #444;
+      color: hsl(0, 0%, 27%);
       line-height: 1.7;
     }
 
     .info-divider {
       border: none;
-      border-top: 1px solid #eee;
+      border-top: 1px solid hsl(0, 0%, 93%);
       margin: 1.5rem 0;
     }
 
@@ -512,7 +512,7 @@
       background: rgba(255, 253, 232, 0.5) !important;
       padding: 0 3px !important;
     }
-    .leaflet-control-attribution a { color: #888 !important; }
+    .leaflet-control-attribution a { color: hsl(0, 0%, 53%) !important; }
 
     .directions-btn {
       display: inline-block;
@@ -566,7 +566,7 @@
 
     .review-text {
       font-size: 0.82rem;
-      color: #444;
+      color: hsl(0, 0%, 27%);
       line-height: 1.75;
       font-style: italic;
       margin-bottom: 0.625rem;
@@ -577,7 +577,7 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #888;
+      color: hsl(0, 0%, 53%);
     }
 
     .review-arrow {
@@ -612,7 +612,7 @@
       width: 0.4375rem;
       height: 0.4375rem;
       border-radius: 50%;
-      background: #ddd;
+      background: hsl(0, 0%, 87%);
       cursor: pointer;
       transition: background 0.2s;
     }
@@ -864,7 +864,7 @@
     #blackout {
       position: fixed;
       inset: -50vh 0;
-      background: #000;
+      background: hsl(0, 0%, 0%);
       z-index: 99999;
       display: none;
     }
@@ -945,8 +945,8 @@
     <!-- ABOUT -->
     <div id="tab-about" class="tab-panel">
       <img src="images/img_7156.webp" alt="Wake Espresso team in front of the Canyon Lake boat mural" width="800" height="800" loading="lazy" style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto 1.5rem;">
-      <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #111; text-align: center; padding: 0.5rem 0 1.25rem;">Locally Brewed, Lake Approved</p>
-      <p style="font-size: 0.95rem; line-height: 1.8; color: #444; text-align: left; padding: 0 0 2.25rem; text-indent: 1.5em;">Founded by Canyon Lake natives, Wake Espresso is all about great coffee and lake vibes. Whether you're heading out on the water or just passing through, grab a handcrafted coffee, tea, or espresso drink from our convenient drive-thru or walk-up window.</p>
+      <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: hsl(0, 0%, 7%); text-align: center; padding: 0.5rem 0 1.25rem;">Locally Brewed, Lake Approved</p>
+      <p style="font-size: 0.95rem; line-height: 1.8; color: hsl(0, 0%, 27%); text-align: left; padding: 0 0 2.25rem; text-indent: 1.5em;">Founded by Canyon Lake natives, Wake Espresso is all about great coffee and lake vibes. Whether you're heading out on the water or just passing through, grab a handcrafted coffee, tea, or espresso drink from our convenient drive-thru or walk-up window.</p>
       <div class="feed-header">
         <h2 class="section-title"><span>Follow Us</span></h2>
         <a href="https://www.instagram.com/wakeespresso" target="_blank" rel="noopener">@wakeespresso</a>
@@ -1311,7 +1311,7 @@
       </div>
       <div class="info-block">
         <h2 class="section-title"><span>Hours</span></h2>
-        <table style="margin: 0 auto; font-size: 0.75rem; color: #444; border-collapse: collapse; line-height: 2;">
+        <table style="margin: 0 auto; font-size: 0.75rem; color: hsl(0, 0%, 27%); border-collapse: collapse; line-height: 2;">
           <tr><td style="text-align:right; padding-right: 20px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Monday</td><td>5:30AM – 7:00PM</td></tr>
           <tr><td style="text-align:right; padding-right: 20px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Tuesday</td><td>5:30AM – 7:00PM</td></tr>
           <tr><td style="text-align:right; padding-right: 20px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">Wednesday</td><td>5:30AM – 7:00PM</td></tr>
@@ -1488,8 +1488,8 @@
       const icon = L.divIcon({
         className: '',
         html: `<svg width="30" height="38" viewBox="0 0 30 38" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 0C6.716 0 0 6.716 0 15c0 9.375 15 23 15 23S30 24.375 30 15C30 6.716 23.284 0 15 0z" fill="#0cc0df"/>
-          <circle cx="15" cy="15" r="5.5" fill="#fffef5"/>
+          <path d="M15 0C6.716 0 0 6.716 0 15c0 9.375 15 23 15 23S30 24.375 30 15C30 6.716 23.284 0 15 0z" fill="hsl(189, 90%, 46%)"/>
+          <circle cx="15" cy="15" r="5.5" fill="hsl(55, 100%, 98%)"/>
         </svg>`,
         iconSize: [30, 38],
         iconAnchor: [15, 38],
@@ -1498,7 +1498,7 @@
 
       L.marker([lat, lon], { icon })
         .addTo(map)
-        .bindPopup('<strong>Wake Espresso</strong><br><span style="color:#555">8392 FM2673, Canyon Lake, TX</span>')
+        .bindPopup('<strong>Wake Espresso</strong><br><span style="color:hsl(0, 0%, 33%)">8392 FM2673, Canyon Lake, TX</span>')
         .openPopup();
     }
 
@@ -1839,7 +1839,7 @@
         el.style.transition = 'opacity 0.4s ease';
         el.style.opacity = '0';
       });
-      requestAnimationFrame(() => { w.style.backgroundColor = '#0cc0df'; });
+      requestAnimationFrame(() => { w.style.backgroundColor = 'hsl(189, 90%, 46%)'; });
       setTimeout(() => location.reload(), 700);
     });
 
